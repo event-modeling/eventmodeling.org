@@ -1,17 +1,17 @@
-baseURL = "http://example.org/"
+baseURL = "https://eventmodeling.org/"
 languageCode = "en-us"
-title = "Ezhil"
+title = "Event Modeling"
 theme = "ezhil"
 
 pygmentsstyle = "vs"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-googleAnalytics = "UA-123-45"
-disqusShortname = "localhost"
+googleAnalytics = "UA-141789090-2"
+disqusShortname = "eventmodeling"
 
 [params]
-	subtitle = "Clean and minimal personal [blog theme for Hugo](https://github.com/vividvilla/ezhil)"
+	subtitle = "Designing Modern Information Systems"
 	# Number of posts to show in recent posts list.
 	recentPostsCount = 10
 	# Content types which are excluded from recent posts and archive page.
