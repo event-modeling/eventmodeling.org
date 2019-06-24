@@ -42,12 +42,12 @@ weight = 4
 [[params.social]]
 name = "Github"
 icon = "github"
-url = "https://github.com/vividvilla/ezhil"
+url = "https://github.com/event-modeling"
 
 [[params.social]]
 name = "Twitter"
 icon = "twitter"
-url = "https://twitter.com/gohugoio"
+url = "https://twitter.com/eventmodeling"
 
 [[params.social]]
 name = "RSS"
