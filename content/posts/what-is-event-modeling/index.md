@@ -1,7 +1,7 @@
 ---
 title: "Event Modeling: What is it?"
 date: 2019-06-23T19:01:58+07:00
-description: "Event Modeling is a way to design a blueprint for an Information System. It is done in a way that allows the clearest communication of the system's workings to the largest possible cross-section of roles in an organization."
+description: "Event Modeling is a way to design a blueprint for an Information System of any size or scale. It is done in a way that allows the clearest communication of the system's workings to the largest possible cross-section of roles in an organization. The system can be checked for completeness by following the single thread of data propagation through it."
 tags: [Intro, Background, Theory]
 ---
 ## Motivation
@@ -80,5 +80,33 @@ We just covered the first 2 patterns of the 4 that are needed to describe most s
 When we have an external system that's providing us with information, it's helpful to translate that information into a form that is more familiar in our own system. In our hotel system, we may get events from guests' GPS coordinates if they opted in to our highly reactive cleaning crew. We would not want to use longitude and latitude pairs as events to specify preconditions in our system. We would rather have events that mean something to us like "Guest left hotel", "Guest returned to hotel room".
 
 ![understand](understand.png)
+
+Often, translations are simple enough to represent as views that get their information from external events. If we don't use them as any "Given" parts of tests, the values they store in that view model are simply represented in the command paramaters in our state change tests.
+
+### Automation
+
+Our system is going to need to communicate with external services. When the guests in our hotel are paying for their stay when they check out, our system makes a call to a payment processor. We can make the concept of how this occurs with the idea of a "todo list" for some processor in our system. This todo list shows tasks we need to complete. Our processor goes through that list from time to time (could be milliseconds or days) and sends out a command to the external system to process the payment, as an example. The reply from the external system is then translated into an event that we store back in our system. This way we keep the building blocks that we use in our system as something that's meaningful to us.
+
+![automate](automate.png)
+
+We show this by putting a processor in the top of our blueprint which has the wireframes. This shows that there are things not evident on the screen but are happening behind the scenes. A user may expect a spinning icon to indicate a delay due to background tasks needing to finish. The specification for this has the form of "**Given**: A view of the tasks to do, **When** This command is launched for each item, **Then** These events are expected back."
+
+In reality, these may be implemented in many different ways such as queues, reactive or real-time constructs. They may even actually be manual todo lists that our employees use. The goal here is to communicate how our system communicates with the outside world when it needs to affect it. 
+
+## Workshop Format
+
+Event Modeling is done in 7 steps. We explained the end-goal already. So let's rewind to the beginning and show how to build up to the blueprint:
+
+### 1. Brain Storming
+
+We have someone explain the goals of the project and other information. The participants then envision what system would look and behave like. They put down all the events that they can conceive of having happened. Here we gently introduce the concept that only state-changing events are to be specified. Often, people will name "guest viewed calendar for room availability". We put those aside for now - they are not events.
+
+### 2. Story Line
+
+Now the task is to create a plausible story made of these events. So they are arranged in a line and everyone reviews this time line to understand that this makes sense as events that happen in order.
+
+## Project Management
+
+(to be continued)
 
 ** This is a periodically updated article that will migrate to a page on the site as a resource.
