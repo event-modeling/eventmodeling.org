@@ -101,11 +101,77 @@ Event Modeling is done in 7 steps. We explained the end-goal already. So let's r
 
 We have someone explain the goals of the project and other information. The participants then envision what system would look and behave like. They put down all the events that they can conceive of having happened. Here we gently introduce the concept that only state-changing events are to be specified. Often, people will name "guest viewed calendar for room availability". We put those aside for now - they are not events.
 
-### 2. Story Line
+### 2. The Plot
 
 Now the task is to create a plausible story made of these events. So they are arranged in a line and everyone reviews this time line to understand that this makes sense as events that happen in order.
 
+### 3. The Story Board
+
+Next, the wireframes or mockups of the story are needed to address those that are visual learners. More importantly, each field must be represented so that the blueprint for the system has the source of and destination of the information represented from the user's perspective.
+
+#### 3.1 UX Concurrency
+
+The wireframes are generally put at the top of the blueprint. They can be divided into separate swimlanes to show what each user sees if there is more than one. There are no screens that appear above one another as we need to capture each change in the system state as a separate vertical slice of the blueprint. The different ordering can be shown in the various specifications. If it is core to the system or very important to communicate, alternate workflows will need to be added to the blueprint.
+
+### 4. Identify Inputs
+
+From the earlier secttion we saw that we need to show how we enable the user to change the state of the system. This is usually the step in which we do this introduction of these blue boxes. Each time an event is stored due to a users action, we link that to the UI by a command that shows what we are getting from the screen or implicitly from client state if it's a web application.
+
+### 5. Identify Outputs
+
+Again looking back at our goals for the blueprint, we now have to link information accumulated by storing events back into the UI via views (aka read-models). These may be things like the calendar view in our hotel system that will show the availability of rooms when a user is looking to book a room. 
+
+### 6. Apply Conway's Law
+
+Now that we know how information gets in and out of our system, we can start to look at organizing the events themselves into swimlanes. We need to do this to allow the system to exist as a set of autonomous parts that separate teams can own. This allows specialization to happen to a level that we control instead of falling out of the composition of teams.
+
+### 7. Elaborate Scenarios
+
+Each workflow step is tied to either a command or a view/read-model. The specifications were explained earier on. How we make them is still collaboratively with all participants in the same space. A Give-When-Then or Given-Then can be constructed one after the other very rapidly while being reviewed by multiple role representatives. This allows what is traditionally done as user story writing by a dedicated product owner in isolation in a text format, to be done visually in a very small amount of time collaboratively. What's very critical here, is that each specification is tied to exactly one command or view.
+
 ## Project Management
+
+The final output of the exercise if done to completion is a set of very small projects defined by all the scenarios for each workflow step. They are in a format that allows them to be directly translated to what developers will use to make their unit tests. They are also coupled to the adjecant workflow steps by only the contract.
+
+![parallel effort](parallel.png)
+
+### Strong Contracts
+
+Many project managemnt, business and coordination issues are mitigated by the fact that we have made explicit contarcts as to the shape of the information of when we start a particular step of the workflow and what is the shape of the data when it's finished. These pre- and post-conditions are what allows the work to be completed in relative isolation and later snap together with the adjoining steps as designed.
+
+#### Flat Cost Curve
+
+The biggest impact of using Event Modeling is the flat cost curve of the average feature cost. This is due to the fact that the effort of building each workflow step is not impacted by the development of other workflows. One important thing to understand, is that a workflow step is considered to be repeated on the event model if it uses the same command or view. 
+
+![flat cost curve](flat-cost-curve.png)
+
+The impact of this is very far reaching because it is what changes software development back into an engineering practice. It's what makes creating an information system work like the construction of a house. Features can be created in any order. Traditional development cannot rely on estimates because whether the feature gets developed early on versus later in the project impacts the amount of work required. Reprioritizing work makes any previous estimates unreliable.
+
+#### Done is Done Done Right
+
+When a workflow step is implemented, the act of implementing any other workflow step does not cause the need to revisit this already complete workflow step. It's the reason that the constant feature cost curve can be realized.
+
+#### Estimates without Estimating
+
+With a constant cost curve, the effort for an organization to implement can simply be measured over many features over time. This is an impartial way to empiracally determine the velocity of teams. These numbers are then used to scope, schedule and cost out future projects.
+
+#### Mix and Match
+
+Because of the contracts between each workflow step being reliable, we can prioritize the work. This allows the most important features to be implemented immediately and have the remaining work "snap in" when it gets finished later. Now the project is significantly de-risked by having the most important pieces tested right away at no risk of having the other features blowing up in size of effort by being pushed to a later date.
+
+#### Change Management
+
+When the plans change, we simply adjust the event model. This is usually done by just copying the current one and adjusting. Now we can see where the differences are. If a new piece of information is added to one event, that constitutes a new version of the workflow that creates it. Same with the views. If these have not been implemented yet, they don't change our estimate. If they are already implemented, they add another unit of work to our plan because it's considered a replacement. There are a few more rules around this. The end result is a definitive guide for change managemnt.
+
+## Security
+
+![security arrows](arrows.png)
+
+With an event model, the solution shows exacly where, and equally importantly, when sensitive data crosses boundaries. With traditional audits, the number of interwiews with staff was time consuming and at risk of missing important areas. Security concerns are addressed most responsibly when the applications have an event model to reference.
+
+## Conclusion for Now
+
+Event Modeling is changing how information systems are built. 
 
 (to be continued)
 
