@@ -95,6 +95,8 @@ In reality, these may be implemented in many different ways such as queues, reac
 
 ## Workshop Format - The 7 Steps
 
+![the seven steps for the workshop](../../about/summit-drawing.jpg)
+
 Event Modeling is done in 7 steps. We explained the end-goal already. So let's rewind to the beginning and show how to build up to the blueprint:
 
 ### 1. Brain Storming
