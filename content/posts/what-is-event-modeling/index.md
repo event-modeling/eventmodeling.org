@@ -71,7 +71,7 @@ A view into the facts already in the system has been changing as these new event
 
 Specifying how a view behaves is very similar to the way we specify how we accept commands with one difference. The views are passive and cannot reject an event after it's been stored in the system. We have "**Given**: hotel is set up with 12 ocean view rooms, ocean view room was booked from April 4th - 12th X 12, **Then**: the calendar should show all dates except April 4th - 12th for ocean view availability".
 
-## Integration
+### Integration
 
 We just covered the first 2 patterns of the 4 that are needed to describe most systems. Systems can get information from other systems and send information to other systems. It would be tempting to force these 2 patterns to be an extension of the first 2 and share the same space. However, these interactions are harder to communicate as they don't have that human-visible aspect to them and require some higher level patterns.
 
@@ -125,11 +125,17 @@ Again looking back at our goals for the blueprint, we now have to link informati
 
 ### 6. Apply Conway's Law
 
-Now that we know how information gets in and out of our system, we can start to look at organizing the events themselves into swimlanes. We need to do this to allow the system to exist as a set of autonomous parts that separate teams can own. This allows specialization to happen to a level that we control instead of falling out of the composition of teams.
+Now that we know how information gets in and out of our system, we can start to look at organizing the events themselves into swimlanes. We need to do this to allow the system to exist as a set of autonomous parts that separate teams can own. This allows specialization to happen to a level that we control instead of falling out of the composition of teams. See [Conway's Law](http://melconway.com/Home/Conways_Law.html) by Mel Conway.
 
 ### 7. Elaborate Scenarios
 
 Each workflow step is tied to either a command or a view/read-model. The specifications were explained earier on. How we make them is still collaboratively with all participants in the same space. A Give-When-Then or Given-Then can be constructed one after the other very rapidly while being reviewed by multiple role representatives. This allows what is traditionally done as user story writing by a dedicated product owner in isolation in a text format, to be done visually in a very small amount of time collaboratively. What's very critical here, is that each specification is tied to exactly one command or view.
+
+### Completeness Check
+
+At this time the event model should have every field accounted for. All information has to have an origin and a destination. Events must facisitate this transition and hold the necessary fields to do so. This rigor is what is required to get the most benefits of the technique.
+
+A variation of this is where we don't do this final check and rely on absorbing the rework costs. There are scenarios where this is desired.
 
 ## Project Management
 
@@ -159,13 +165,13 @@ With a constant cost curve, the effort for an organization to implement can simp
 
 ##### Technical Sidenote About Test Driven Development
 
-Because the scope of each set of requirements is now per workflow step, the refactoring step of TDD does not impact other workflow steps in the event model. When we don't have an event model, refactoring goes unrestricted and previously completed pieces of work have to be adjusted. The more work is already completed, the more that has to be reviewed and adjusted with each new addition as we build the solution.
+This is the impact of the adoption of Agile practices in the industry to put band-aids over the core issue of lack of design. Because the scope of each set of requirements is now per workflow step, the refactoring step of TDD does not impact other workflow steps in the event model. When we don't have an event model, refactoring goes unrestricted and previously completed pieces of work have to be adjusted. The more work is already completed, the more that has to be reviewed and adjusted with each new addition as we build the solution.
 
 #### Subcontracting
 
 The constant cost curve gives the opportunity to do fixed-cost projects. Once there is a velocity established for a team, you have the cost of the software for your organization. With this number, you now can price out what you are willing to give contractorns in pay for each workflow step they complete.
 
-##### Guarantees 
+##### Guarantees
 
 Since each workflow step is protected from being affected by other workflow steps, any deficiencies are to be guaranteed by who is delivering them with non-billable work. So in the case of a subcontractor doing a bad job just to get more billable items done quickly, they will have to have the next hours of work dedicated to fixing deficiencies of work already done before. This evens out their effective rate of pay because they are not working on new delivarables.
 
@@ -187,9 +193,21 @@ When the plans change, we simply adjust the event model. This is usually done by
 
 With an event model, the solution shows exacly where, and equally importantly, when sensitive data crosses boundaries. With traditional audits, the number of interwiews with staff was time consuming and at risk of missing important areas. Security concerns are addressed most responsibly when the applications have an event model to reference.
 
+## Legacy Systems
+
+Most of the sceranios that real organizations face is where a system is already in place. The main way to deal with a system that is hard to manage because of complexity and lack of understanding is to either rewrite it or to refactor it while it runs. Both of these are very costly.
+
+A third, less risky option exists: Freeze the old system. With proper buy-in, the organization can agree to not alter the existing system. Instead, dealing with bugs and adding new functionality is done on the side as a side-car solution.
+
+Events can be gathered from the database of the old system and make views of that state - employing the [translate](#translation) pattern described previously. Y-valve redirection of user action can add new functionality in the side solution. An example which fixes a bug (notice that we use the [external integration pattern](./#automation) and extends the old system to add profile pictures is shown here:
+
+![legacy side car event model](event-modeling-legacy-side-car.jpg)
+
+This pattern allows an organization to stop putting energy into the sub-optimal existing system and get unblocked from delivering value via the patterns that enable the benefits of the Event Model.
+
 ## Conclusion for Now
 
-Event Modeling is changing how information systems are built. 
+Event Modeling is changing how information systems are built. With simple repeatable patterns, information systems are as predicible as engineering efforts shoud be.
 
 (to be continued)
 
