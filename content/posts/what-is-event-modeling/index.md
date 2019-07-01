@@ -155,9 +155,25 @@ When a workflow step is implemented, the act of implementing any other workflow 
 
 With a constant cost curve, the effort for an organization to implement can simply be measured over many features over time. This is an impartial way to empiracally determine the velocity of teams. These numbers are then used to scope, schedule and cost out future projects.
 
-#### Mix and Match
+##### Technical Sidenote About Test Driven Development
 
-Because of the contracts between each workflow step being reliable, we can prioritize the work. This allows the most important features to be implemented immediately and have the remaining work "snap in" when it gets finished later. Now the project is significantly de-risked by having the most important pieces tested right away at no risk of having the other features blowing up in size of effort by being pushed to a later date.
+Because the scope of each set of requirements is now per workflow step, the refactoring step of TDD does not impact other workflow steps in the event model. When we don't have an event model, refactoring goes unrestricted and previously completed pieces of work have to be adjusted. The more work is already completed, the more that has to be reviewed and adjusted with each new addition as we build the solution.
+
+#### Subcontracting
+
+The constant cost curve gives the opportunity to do fixed-cost projects. Once there is a velocity established for a team, you have the cost of the software for your organization. With this number, you now can price out what you are willing to give contractorns in pay for each workflow step they complete.
+
+##### Guarantees 
+
+Since each workflow step is protected from being affected by other workflow steps, any deficiencies are to be guaranteed by who is delivering them with non-billable work. So in the case of a subcontractor doing a bad job just to get more billable items done quickly, they will have to have the next hours of work dedicated to fixing deficiencies of work already done before. This evens out their effective rate of pay because they are not working on new delivarables.
+
+This can be carried out over longer periods within an employee engagement by making these metrics available through different checkpoints for performance.
+
+Due to the effective pay self-adjusting to the capability of the individual, it is also a way to on-board new employees and pay them fairly whily they are in the probation stage of the engagement. This contract-to-hire process removes the subjective and largely ineffective interview process for technical positions.
+
+#### Prioritization
+
+Moving work on a schedule as to what steps are going to be implemented first is done without changing the estimated costs of each item. This ensures that prioritization of work has no impact in the total cost also. The constant cost curve is required to allow this "agility" of reprioritizing features.
 
 #### Change Management
 
