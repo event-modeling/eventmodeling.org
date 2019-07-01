@@ -22,3 +22,9 @@ These are the upcoming workshops around the globe that are about or include Even
 1. [CQRS/ES and Event Modeling - London, UK - July 9-11](adaptechgroup.com/workshop-london/#eventmodeling-site)
 2. CQRS/ES and Event Modeling - Seattle, WA - August 19-21 (link coming soon)
 3. CQRS/ES and Event Modeling - Montreal, QC - August 26-28 (link coming soon)
+
+## Realtime Board Template
+
+![trello example](../event-modeling-tutorial.jpg)
+
+In the demos of event modeling, [Miro Realtime Board](https://miro.com) is used. If you would like to get started from a small example, you can download the example event model above from [here](/event-modeling.rtb).
