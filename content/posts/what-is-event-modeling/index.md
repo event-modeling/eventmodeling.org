@@ -81,7 +81,7 @@ When we have an external system that's providing us with information, it's helpf
 
 ![understand](understand.png)
 
-Often, translations are simple enough to represent as views that get their information from external events. If we don't use them as any "Given" parts of tests, the values they store in that view model are simply represented in the command paramaters in our state change tests.
+Often, translations are simple enough to represent as views that get their information from external events. If we don't use them as any "Given" parts of tests, the values they store in that view model are simply represented in the command parameters in our state change tests.
 
 ### Automation
 
@@ -117,7 +117,7 @@ The wireframes are generally put at the top of the blueprint. They can be divide
 
 ### 4. Identify Inputs
 
-From the earlier secttion we saw that we need to show how we enable the user to change the state of the system. This is usually the step in which we do this introduction of these blue boxes. Each time an event is stored due to a users action, we link that to the UI by a command that shows what we are getting from the screen or implicitly from client state if it's a web application.
+From the earlier section we saw that we need to show how we enable the user to change the state of the system. This is usually the step in which we do this introduction of these blue boxes. Each time an event is stored due to a users action, we link that to the UI by a command that shows what we are getting from the screen or implicitly from client state if it's a web application.
 
 ### 5. Identify Outputs
 
@@ -129,23 +129,23 @@ Now that we know how information gets in and out of our system, we can start to 
 
 ### 7. Elaborate Scenarios
 
-Each workflow step is tied to either a command or a view/read-model. The specifications were explained earier on. How we make them is still collaboratively with all participants in the same space. A Give-When-Then or Given-Then can be constructed one after the other very rapidly while being reviewed by multiple role representatives. This allows what is traditionally done as user story writing by a dedicated product owner in isolation in a text format, to be done visually in a very small amount of time collaboratively. What's very critical here, is that each specification is tied to exactly one command or view.
+Each workflow step is tied to either a command or a view/read-model. The specifications were explained earlier on. How we make them is still collaboratively with all participants in the same space. A Give-When-Then or Given-Then can be constructed one after the other very rapidly while being reviewed by multiple role representatives. This allows what is traditionally done as user story writing by a dedicated product owner in isolation in a text format, to be done visually in a very small amount of time collaboratively. What's very critical here, is that each specification is tied to exactly one command or view.
 
 ### Completeness Check
 
-At this time the event model should have every field accounted for. All information has to have an origin and a destination. Events must facisitate this transition and hold the necessary fields to do so. This rigor is what is required to get the most benefits of the technique.
+At this time the event model should have every field accounted for. All information has to have an origin and a destination. Events must facilitate this transition and hold the necessary fields to do so. This rigor is what is required to get the most benefits of the technique.
 
 A variation of this is where we don't do this final check and rely on absorbing the rework costs. There are scenarios where this is desired.
 
 ## Project Management
 
-The final output of the exercise if done to completion is a set of very small projects defined by all the scenarios for each workflow step. They are in a format that allows them to be directly translated to what developers will use to make their unit tests. They are also coupled to the adjecant workflow steps by only the contract.
+The final output of the exercise if done to completion is a set of very small projects defined by all the scenarios for each workflow step. They are in a format that allows them to be directly translated to what developers will use to make their unit tests. They are also coupled to the adjacent workflow steps by only the contract.
 
 ![parallel effort](parallel.png)
 
 ### Strong Contracts
 
-Many project managemnt, business and coordination issues are mitigated by the fact that we have made explicit contarcts as to the shape of the information of when we start a particular step of the workflow and what is the shape of the data when it's finished. These pre- and post-conditions are what allows the work to be completed in relative isolation and later snap together with the adjoining steps as designed.
+Many project management, business and coordination issues are mitigated by the fact that we have made explicit contracts as to the shape of the information of when we start a particular step of the workflow and what is the shape of the data when it's finished. These pre- and post-conditions are what allows the work to be completed in relative isolation and later snap together with the adjoining steps as designed.
 
 #### Flat Cost Curve
 
@@ -161,15 +161,15 @@ When a workflow step is implemented, the act of implementing any other workflow 
 
 #### Estimates without Estimating
 
-With a constant cost curve, the effort for an organization to implement can simply be measured over many features over time. This is an impartial way to empiracally determine the velocity of teams. These numbers are then used to scope, schedule and cost out future projects.
+With a constant cost curve, the effort for an organization to implement can simply be measured over many features over time. This is an impartial way to empirically determine the velocity of teams. These numbers are then used to scope, schedule and cost out future projects.
 
-##### Technical Sidenote About Test Driven Development
+##### Technical Side-Note About Test Driven Development
 
 This is the impact of the adoption of Agile practices in the industry to put band-aids over the core issue of lack of design. Because the scope of each set of requirements is now per workflow step, the refactoring step of TDD does not impact other workflow steps in the event model. When we don't have an event model, refactoring goes unrestricted and previously completed pieces of work have to be adjusted. The more work is already completed, the more that has to be reviewed and adjusted with each new addition as we build the solution.
 
 #### Subcontracting
 
-The constant cost curve gives the opportunity to do fixed-cost projects. Once there is a velocity established for a team, you have the cost of the software for your organization. With this number, you now can price out what you are willing to give contractorns in pay for each workflow step they complete.
+The constant cost curve gives the opportunity to do fixed-cost projects. Once there is a velocity established for a team, you have the cost of the software for your organization. With this number, you now can price out what you are willing to give contractors in pay for each workflow step they complete.
 
 ##### Guarantees
 
@@ -177,7 +177,7 @@ Since each workflow step is protected from being affected by other workflow step
 
 This can be carried out over longer periods within an employee engagement by making these metrics available through different checkpoints for performance.
 
-Due to the effective pay self-adjusting to the capability of the individual, it is also a way to on-board new employees and pay them fairly whily they are in the probation stage of the engagement. This contract-to-hire process removes the subjective and largely ineffective interview process for technical positions.
+Due to the effective pay self-adjusting to the capability of the individual, it is also a way to on-board new employees and pay them fairly while they are in the probation stage of the engagement. This contract-to-hire process removes the subjective and largely ineffective interview process for technical positions.
 
 #### Prioritization
 
@@ -185,17 +185,17 @@ Moving work on a schedule as to what steps are going to be implemented first is 
 
 #### Change Management
 
-When the plans change, we simply adjust the event model. This is usually done by just copying the current one and adjusting. Now we can see where the differences are. If a new piece of information is added to one event, that constitutes a new version of the workflow that creates it. Same with the views. If these have not been implemented yet, they don't change our estimate. If they are already implemented, they add another unit of work to our plan because it's considered a replacement. There are a few more rules around this. The end result is a definitive guide for change managemnt.
+When the plans change, we simply adjust the event model. This is usually done by just copying the current one and adjusting. Now we can see where the differences are. If a new piece of information is added to one event, that constitutes a new version of the workflow that creates it. Same with the views. If these have not been implemented yet, they don't change our estimate. If they are already implemented, they add another unit of work to our plan because it's considered a replacement. There are a few more rules around this. The end result is a definitive guide for change management.
 
 ## Security
 
 ![security arrows](arrows.png)
 
-With an event model, the solution shows exacly where, and equally importantly, when sensitive data crosses boundaries. With traditional audits, the number of interwiews with staff was time consuming and at risk of missing important areas. Security concerns are addressed most responsibly when the applications have an event model to reference.
+With an event model, the solution shows exactly where, and equally importantly, when sensitive data crosses boundaries. With traditional audits, the number of interviews with staff was time consuming and at risk of missing important areas. Security concerns are addressed most responsibly when the applications have an event model to reference.
 
 ## Legacy Systems
 
-Most of the sceranios that real organizations face is where a system is already in place. The main way to deal with a system that is hard to manage because of complexity and lack of understanding is to either rewrite it or to refactor it while it runs. Both of these are very costly.
+Most of the scenarios that real organizations face is where a system is already in place. The main way to deal with a system that is hard to manage because of complexity and lack of understanding is to either rewrite it or to refactor it while it runs. Both of these are very costly.
 
 A third, less risky option exists: Freeze the old system. With proper buy-in, the organization can agree to not alter the existing system. Instead, dealing with bugs and adding new functionality is done on the side as a side-car solution.
 
@@ -207,7 +207,7 @@ This pattern allows an organization to stop putting energy into the sub-optimal 
 
 ## Conclusion for Now
 
-Event Modeling is changing how information systems are built. With simple repeatable patterns, information systems are as predicible as engineering efforts shoud be.
+Event Modeling is changing how information systems are built. With simple repeatable patterns, information systems are as predicable as engineering efforts should be.
 
 (to be continued)
 
