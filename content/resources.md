@@ -28,3 +28,9 @@ These are the upcoming workshops around the globe that are about or include Even
 ![trello example](../event-modeling-tutorial.jpg)
 
 In the demos of event modeling, [Miro Realtime Board](https://miro.com) is used. If you would like to get started from a small example, you can download the example event model above from [here](/event-modeling.rtb).
+
+## Implementation Gist
+
+![trello screenshot](../trello-screenshot.png)
+
+This script only requires [fish shell](https://github.com/fish-shell/fish-shell) and a couple of command line utilities to show the above example work. You can find it in a gist [here](https://gist.github.com/adymitruk/7fc2adb8598ad861d4b3dae114afd4c9).
