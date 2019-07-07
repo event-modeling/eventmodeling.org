@@ -19,7 +19,7 @@ This is the first public recording of a talk on Event Modeling. It was recorded 
 
 These are the upcoming workshops around the globe that are about or include Event Modeling:
 
-1. [CQRS/ES and Event Modeling - London, UK - July 9-11](adaptechgroup.com/workshop-london/#eventmodeling-site)
+1. [CQRS/ES and Event Modeling - London, UK - July 9-11](https://adaptechgroup.com/workshop-london/#eventmodeling-site)
 2. CQRS/ES and Event Modeling - Seattle, WA - August 19-21 (link coming soon)
 3. CQRS/ES and Event Modeling - Montreal, QC - August 26-28 (link coming soon)
 
