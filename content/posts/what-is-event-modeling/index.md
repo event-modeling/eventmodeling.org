@@ -105,35 +105,45 @@ In reality, these may be implemented in many different ways such as queues, reac
 
 ## Workshop Format - The 7 Steps
 
-![the seven steps for the workshop](../../about/summit-drawing.jpg)
-
 Event Modeling is done in 7 steps. We explained the end-goal already. So let's rewind to the beginning and show how to build up to the blueprint:
 
 ### 1. Brain Storming
+
+![Step 1](Step-1.jpg)
 
 We have someone explain the goals of the project and other information. The participants then envision what system would look and behave like. They put down all the events that they can conceive of having happened. Here we gently introduce the concept that only state-changing events are to be specified. Often, people will name "guest viewed calendar for room availability". We put those aside for now - they are not events.
 
 ### 2. The Plot
 
+![Step 2](Step-2.jpg)
+
 Now the task is to create a plausible story made of these events. So they are arranged in a line and everyone reviews this time line to understand that this makes sense as events that happen in order.
 
 ### 3. The Story Board
+
+![Step 3](Step-3.jpg)
 
 Next, the wireframes or mockups of the story are needed to address those that are visual learners. More importantly, each field must be represented so that the blueprint for the system has the source of and destination of the information represented from the user's perspective.
 
 #### 3.1 UX Concurrency
 
-The wireframes are generally put at the top of the blueprint. They can be divided into separate swimlanes to show what each user sees if there is more than one. There are no screens that appear above one another as we need to capture each change in the system state as a separate vertical slice of the blueprint. The different ordering can be shown in the various specifications. If it is core to the system or very important to communicate, alternate workflows will need to be added to the blueprint.
+The wireframes are generally put at the top of the blueprint. They can be divided into separate swimlanes to show what each user sees if there is more than one. There are no screens that appear above one another as we need to capture each change in the system state as a separate vertical slice of the blueprint. The different ordering can be shown in the various specifications. If it is core to the system or very important to communicate, alternate workflows will need to be added to the blueprint. This is part of the last step that shows organization but can be done earlier if helpful.
 
 ### 4. Identify Inputs
+
+![Step 4](Step-4.jpg)
 
 From the earlier section we saw that we need to show how we enable the user to change the state of the system. This is usually the step in which we do this introduction of these blue boxes. Each time an event is stored due to a users action, we link that to the UI by a command that shows what we are getting from the screen or implicitly from client state if it's a web application.
 
 ### 5. Identify Outputs
 
+![Step 5](Step-5.jpg)
+
 Again looking back at our goals for the blueprint, we now have to link information accumulated by storing events back into the UI via views (aka read-models). These may be things like the calendar view in our hotel system that will show the availability of rooms when a user is looking to book a room. 
 
 ### 6. Apply Conway's Law
+
+![Step 6](Step-6.jpg)
 
 Now that we know how information gets in and out of our system, we can start to look at organizing the events themselves into swimlanes. We need to do this to allow the system to exist as a set of autonomous parts that separate teams can own. This allows specialization to happen to a level that we control instead of falling out of the composition of teams. See [Conway's Law](http://melconway.com/Home/Conways_Law.html) by Mel Conway.
 
