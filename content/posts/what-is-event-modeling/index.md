@@ -37,13 +37,13 @@ Time is a concept that is now a core piece of describing a system. The component
 
 ### Simplicity
 
-When we want to adopt certain practices or processes to help one another understand and communiacte, it is inversly proportional to the amount of learning individuals must do to be proficient in those methods. Put in another way, if an organization chooses to adopt a process called "X", and X requires one book and a workshop that takes a week to go through, it nullifies the effectiveness of X, and here's the worst part, **no matter how good X is**.
+When we want to adopt certain practices or processes to help one another understand and communicate, it is inversely proportional to the amount of learning individuals must do to be proficient in those methods. Put in another way, if an organization chooses to adopt a process called "X", and X requires one book and a workshop that takes a week to go through, it nullifies the effectiveness of X, and here's the worst part, **no matter how good X is**.
 
 When the book is a required reading by the people in an organization, everyone will say they have read it; only half will have actually read it; half of those will claim they understood it; and only half of those will have understood it; and half of those will be able to apply it.
 
-This is why Event Modeling only uses 3 moving pieces and 4 patterns based on 2 ideas. It takes a few minutes to explain and the rest of the learing is done in practice, transparently where any deficiencies in the understanding of even those few core ideas are quickly corrected.
+This is why Event Modeling only uses 3 moving pieces and 4 patterns based on 2 ideas. It takes a few minutes to explain and the rest of the learning is done in practice, transparently where any deficiencies in the understanding of even those few core ideas are quickly corrected.
 
-This is how you get to an undertanding in an organization.
+This is how you get to an understanding in an organization.
 
 ### Events
 
