@@ -11,6 +11,10 @@ The community needed a non-technical discussion on Information System design. Th
 
 ## Intro Video
 
+This is a more recent video of Event Modeling being explained to the DDD Greece meetup group.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SqaDYwgQ664" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 This is the first public recording of a talk on Event Modeling. It was recorded at the Event-Driven Meetup in Seattle, WA. James Nugent was presenting on the Raft consensus algorithm that same night.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/htxlr8QxeGc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
