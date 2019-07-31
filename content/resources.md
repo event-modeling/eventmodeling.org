@@ -7,7 +7,7 @@ draft: false
 
 ## Slack Group
 
-The community needed a non-technical discussion on Information System design. The Slack channel was created to create an environment where this type of discussion could happen and allow a new avenue for the practice to get adopted. You can join the community throught this [link](https://join.slack.com/t/eventmodeling/shared_invite/enQtNjc1NDk0NjcwMjQ2LTM3NjY5MmE1ODE0MDU3MzU2MzcyNGRiZDZjNTNkOTJmOTNmNzU2NjRjMzNlYjE4ZmViMTllODUwZjY1M2E3Yjk)
+The community needed a non-technical discussion on Information System design. The Slack channel was created to create an environment where this type of discussion could happen and allow a new avenue for the practice to get adopted. You can join the community throught this [link](https://join.slack.com/t/eventmodeling/shared_invite/enQtNzE0NjAyMjMwNjQ2LTY1NjgzZWI4ZjE0NmM0MWU0OGQwNjA3ZTZkZWViYWUzMTRjZWViYzdhZWMzNWMwZjQyM2VhMWVjZWQ5NjNjMjU)
 
 ## Intro Video
 
