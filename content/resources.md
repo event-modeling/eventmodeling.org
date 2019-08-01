@@ -25,6 +25,9 @@ These are the upcoming workshops around the globe that are about or include Even
 
 1. [CQRS/ES and Event Modeling - Seattle, WA - August 19-21] (https://adaptechgroup.com/workshop-seattle/#eventmodeling-site)
 2. [CQRS/ES and Event Modeling - Montreal, QC - August 26-28] (https://adaptechgroup.com/workshop-montreal/#eventmodeling-site)
+3. CQRS/ES and Event Modeling - Den Haag, NL - September 4-6 (link coming soon)
+4. Advanced CQRS-ES with Event Modeling - Boston, MA - December 11-13 (link coming soon)
+
 
 ## Realtime Board Template
 
