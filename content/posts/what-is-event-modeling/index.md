@@ -32,6 +32,7 @@ So we are now at a cross-roads where we have very mature tooling, but that tooli
 ## The Model That Works
 
 ![blueprint](blueprint.jpg)
+<sub>[high res version](blueprint_large.jpg)</sub>
 
 Time is a concept that is now a core piece of describing a system. The components and classes that we saw in computing are not as important. We can show, by example, what a system is supposed to do from start to finish, on a time line and with no branching - again to make use of that memory aspect of our brains. This is the Event Model. It is used to follow all field values in the UI to the storage of those value to where they finally end up on a report or a screen. It's generally done with sticky notes on a wall or whiteboard - or an online version of a whiteboard. We'll see that simplicity is at the heart of the approach as we will only use 3 types of building blocks as well as traditional wireframes or mockups. Further to keep things simple, we will rely on only 4 patterns of how we structure the diagram.
 
@@ -54,6 +55,7 @@ Let's say we want to design a hotel website for a hotel chain for allowing our c
 To bring in the visual part of story-telling we show wireframes or web page mockups across the top. These can be organized in swim-lanes to show different people (or sometimes systems) interacting with our system. We also show any automation here with a symbol like gears to illustrate that the system is doing something. This has an easy to understand set of mechanics of a todo list that a process goes and does and marks items as done. In our hotel example, this could be a payment system or notification system.
 
 ![innovation](innovate.jpg)
+<sub>[high res version](innovate_large.jpg)</sub>
 
 At this point we have enough to be able to design some systems with some UX/UI people. But there are 2 very fundamental pieces that must be added to the blueprint which show 2 core features of any information system: Empowering the user and informing the user.
 
@@ -64,6 +66,7 @@ Most information systems must give an ability for a user to affect state of the 
 Intentions to change the system are encapsulated in a command. As opposed to simply saving form data to a table in a database, this allows us to have a non-technical way to show the intentions while allowing any implementation - although certain ones have advantages as we will see.
 
 ![empower](empower.jpg)
+<sub>[high res version](empower_large.jpg)</sub>
 
 From the UI and UX perspective this drives a "command based UI" which goes a long way into helping make composable UIs. With this pattern, it's a lot clearer what the transactional boundaries are both from the technical and business perspectives. The hotel guest either registered successfully or not.
 
@@ -76,6 +79,7 @@ An example might be "**Given**: We have registered, and added a payment method, 
 The second part of any information system is the ability to inform the user about the state of the system. Our hotel guest should know about what days are available for certain types of rooms they are interested in staying in. There are usually many of these and support the multi-model aspect of information systems.
 
 ![inform](inform.jpg)
+<sub>[high res version](inform_large.jpg)</sub>
 
 A view into the facts already in the system has been changing as these new events were being stored. In our hotel system, this calendar view was being updated as new events that affected inventory were happening. Other views may be for the cleaning staff to see which rooms are ready to be cleaned as events about guests checking out are being stored.
 
@@ -90,6 +94,7 @@ We just covered the first 2 patterns of the 4 that are needed to describe most s
 When we have an external system that's providing us with information, it's helpful to translate that information into a form that is more familiar in our own system. In our hotel system, we may get events from guests' GPS coordinates if they opted in to our highly reactive cleaning crew. We would not want to use longitude and latitude pairs as events to specify preconditions in our system. We would rather have events that mean something to us like "Guest left hotel", "Guest returned to hotel room".
 
 ![understand](understand.jpg)
+<sub>[high res version](understand_large.jpg)</sub>
 
 Often, translations are simple enough to represent as views that get their information from external events. If we don't use them as any "Given" parts of tests, the values they store in that view model are simply represented in the command parameters in our state change tests.
 
@@ -98,6 +103,7 @@ Often, translations are simple enough to represent as views that get their infor
 Our system is going to need to communicate with external services. When the guests in our hotel are paying for their stay when they check out, our system makes a call to a payment processor. We can make the concept of how this occurs with the idea of a "todo list" for some processor in our system. This todo list shows tasks we need to complete. Our processor goes through that list from time to time (could be milliseconds or days) and sends out a command to the external system to process the payment, as an example. The reply from the external system is then translated into an event that we store back in our system. This way we keep the building blocks that we use in our system as something that's meaningful to us.
 
 ![automate](automate.jpg)
+<sub>[high res version](automate_large.jpg)</sub>
 
 We show this by putting a processor in the top of our blueprint which has the wireframes. This shows that there are things not evident on the screen but are happening behind the scenes. A user may expect a spinning icon to indicate a delay due to background tasks needing to finish. The specification for this has the form of "**Given**: A view of the tasks to do, **When** This command is launched for each item, **Then** These events are expected back."
 
@@ -110,18 +116,21 @@ Event Modeling is done in 7 steps. We explained the end-goal already. So let's r
 ### 1. Brain Storming
 
 ![Step 1](Step-1.jpg)
+<sub>[high res version](Step-1_large.jpg)</sub>
 
 We have someone explain the goals of the project and other information. The participants then envision what system would look and behave like. They put down all the events that they can conceive of having happened. Here we gently introduce the concept that only state-changing events are to be specified. Often, people will name "guest viewed calendar for room availability". We put those aside for now - they are not events.
 
 ### 2. The Plot
 
 ![Step 2](Step-2.jpg)
+<sub>[high res version](Step-2_large.jpg)</sub>
 
 Now the task is to create a plausible story made of these events. So they are arranged in a line and everyone reviews this time line to understand that this makes sense as events that happen in order.
 
 ### 3. The Story Board
 
 ![Step 3](Step-3.jpg)
+<sub>[high res version](Step-3_large.jpg)</sub>
 
 Next, the wireframes or mockups of the story are needed to address those that are visual learners. More importantly, each field must be represented so that the blueprint for the system has the source of and destination of the information represented from the user's perspective.
 
@@ -132,18 +141,21 @@ The wireframes are generally put at the top of the blueprint. They can be divide
 ### 4. Identify Inputs
 
 ![Step 4](Step-4.jpg)
+<sub>[high res version](Step-4_large.jpg)</sub>
 
 From the earlier section we saw that we need to show how we enable the user to change the state of the system. This is usually the step in which we do this introduction of these blue boxes. Each time an event is stored due to a users action, we link that to the UI by a command that shows what we are getting from the screen or implicitly from client state if it's a web application.
 
 ### 5. Identify Outputs
 
 ![Step 5](Step-5.jpg)
+<sub>[high res version](Step-5_large.jpg)</sub>
 
 Again looking back at our goals for the blueprint, we now have to link information accumulated by storing events back into the UI via views (aka read-models). These may be things like the calendar view in our hotel system that will show the availability of rooms when a user is looking to book a room. 
 
 ### 6. Apply Conway's Law
 
 ![Step 6](Step-6.jpg)
+<sub>[high res version](Step-6_large.jpg)</sub>
 
 Now that we know how information gets in and out of our system, we can start to look at organizing the events themselves into swimlanes. We need to do this to allow the system to exist as a set of autonomous parts that separate teams can own. This allows specialization to happen to a level that we control instead of falling out of the composition of teams. See [Conway's Law](http://melconway.com/Home/Conways_Law.html) by Mel Conway.
 
@@ -162,6 +174,7 @@ A variation of this is where we don't do this final check and rely on absorbing 
 The final output of the exercise if done to completion is a set of very small projects defined by all the scenarios for each workflow step. They are in a format that allows them to be directly translated to what developers will use to make their unit tests. They are also coupled to the adjacent workflow steps by only the contract.
 
 ![parallel effort](parallel.jpg)
+<sub>[high res version](parallel_large.jpg)</sub>
 
 ### Strong Contracts
 
@@ -210,6 +223,7 @@ When the plans change, we simply adjust the event model. This is usually done by
 ## Security
 
 ![security arrows](arrows.jpg)
+<sub>[high res version](arrows_large.jpg)</sub>
 
 With an event model, the solution shows exactly where, and equally importantly, when sensitive data crosses boundaries. With traditional audits, the number of interviews with staff was time consuming and at risk of missing important areas. Security concerns are addressed most responsibly when the applications have an event model to reference.
 
