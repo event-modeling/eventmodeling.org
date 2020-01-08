@@ -7,7 +7,7 @@ pygmentsstyle = "vs"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-googleAnalytics = "UA-141789090-2"
+googleAnalytics = ""
 disqusShortname = "eventmodeling-org"
 
 [params]
