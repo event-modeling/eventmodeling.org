@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Hugo Server" type="HUGO_RUN_CONFIGURATION" factoryName="Hugo configuration factory">
+    <option name="hugo.plugin.arguments" value="" />
+    <option name="hugo.plugin.run.server" value="run" />
+    <option name="hugo.plugin.custom.project.dir" value="" />
+    <method v="2" />
+  </configuration>
+</component>
