@@ -1,6 +1,6 @@
 ---
 title: "Event Modeling Traditional Systems"
-date: 2020-03-05T02:04:58+07:00
+date: 2020-03-14T19:15:58-07:00
 description: "Event Modeling can be applied in designing systems that will store state in traditional databases. By providing a more thorough design, the solution can be implemented with a lot less waste that usually comes in the form of having to re-visit finished items as the solution is built up."
 tags: [Intro, Background, Theory]
 ---
@@ -48,7 +48,33 @@ We show the email being sent as a service that runs for us. We can show exactly 
 
 ## Re-work
 
-Being efficient with storage requires re-opening the design of existing tables as we add now features to our system. It is this rework that is responsible for features costing more and more as the size of the whole system grows. We can eliminate re-work if we plan for where all the information will be stored once the system is complete - barring any change in requirements along the way. We'll address this in a later section.
+Being efficient with storage requires re-opening the design of existing tables as we add new features to our system. It is this rework that is responsible for features costing more and more as the size of the whole system grows. The following graph shows features A through G becoming more expensive. They are propped up needing to adjust previous already completed functionality.
+
+![Rework](rework.jpg)
+
+Feature D requires the rework of feature A. Feature E requires feature B to be cracked open and adjusted. It gets worse as the solution grows. Feature F depends on both features A and B both being re-addressed. This can get much worse as this type of dependency can start to stack. Feature G depends on adjusting feature F which precipitates to refactoring features A and B again. 
+
+We have an example of this when we added the verification feature to our sign up example at the beginning of the article. When we needed to store the verification code, we had to add a column to the user table. 
+
+The key point is: If we were implementing the solution as we were designing, we would have to go back and add that capability to the insert statement. 
+
+If we, however, wait until we find a place for all data in the system, and describe how it changes in an event model, we eliminate nearly all the rework. 
+
+![Flat Cost Curve](flat-cost.jpg)
+
+Being able to get work that can effectively cost the same amount no matter when it is programmed is essential for removing risk from projects by having a reliable budget and schedule.
+
+## Small Design Up Front (SDUF)
+
+The scapegoat of modern approaches like agile, waterfall is a name given to doing too much planning so we don't get going soon enough. This was always painted as a very costly investment of a year in very bureaucratic large organisations.
+
+"Big Design Up Front" known as BDUF has been a war-cry of agilists to get going to cut through red tape and get things done - relying on tight feedback loops to take care of design instead through "emergent design". 
+
+But what if we didn't need "Big" design? Event Modeling is the idea that by focusing on the important parts of design only, we effectively make it small. Because it's small, we can do it quickly.
+
+## Data Loss
+
+What happens when we update information? It is deleted. We lose a piece of history that may be crucial in helping us troubleshoot issues in our solution. The event model shows where we have these losses. We can discuss whether we should account for the history of some more important records - or if it's worth it to switch to a loss-less store entirely.
 
 ## Audience
 
@@ -70,4 +96,4 @@ Although not as straight forward as the event sourced approach, we still can get
 
 ## Conclusion
 
-Fred Brooks was right about the power of only considering tables. His statement can be extended in meaning to apply to any form of information persistence in a system. 
+Fred Brooks was right about the power of only considering tables. His statement can be extended in meaning to apply to any form of information persistence in a system. Even though we don't store events, they still are the most effective way to describe what a system is supposed to be doing - especially if done by example.
