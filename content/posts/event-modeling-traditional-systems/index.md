@@ -68,7 +68,7 @@ Being able to get work that can effectively cost the same amount no matter when 
 
 The scapegoat of modern approaches like agile, waterfall is a name given to doing too much planning so we don't get going soon enough. This was always painted as a very costly investment of a year in very bureaucratic large organisations.
 
-"Big Design Up Front" known as BDUF has been a war-cry of agilists to get going to cut through red tape and get things done - relying on tight feedback loops to take care of design instead through "emergent design". 
+"No Big Design Up Front" known as BDUF has been a war-cry of agilists to get going to cut through red tape and get things done - relying on tight feedback loops to take care of design instead through "emergent design". 
 
 But what if we didn't need "Big" design? Event Modeling is the idea that by focusing on the important parts of design only, we effectively make it small. Because it's small, we can do it quickly.
 
