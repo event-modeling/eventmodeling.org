@@ -13,22 +13,17 @@ The community needed a non-technical discussion on Information System design. Th
 
 This is a more recent video of Event Modeling being explained to the DDD Greece meetup group.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SqaDYwgQ664" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube SqaDYwgQ664 >}}
 
 This is the first public recording of a talk on Event Modeling. It was recorded at the Event-Driven Meetup in Seattle, WA. James Nugent was presenting on the Raft consensus algorithm that same night.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/htxlr8QxeGc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube htxlr8QxeGc >}}
 
 ## [Workshops](#workshops) {#workshops}
 
 These are the upcoming workshops around the globe that are about or include Event Modeling:
 
-1. [CQRS/ES and Event Modeling - Paris, FR - January 28-31, 2020](https://formation.hackyourjob.com/catalogue/event_modeling.html) This event is full!
-2. [CQRS/ES and Event Modeling - New York, NY - February 4-6, 2020](https://www.adaptechgroup.com/workshop/)
-3. London - being scheduled
-4. San Francisco - being scheduled
-5. Warsaw - being scheduled
-6. Barcelona - being scheduled
+Given the global situation with the COVID-19 outbreak, weekly or even daily free livestreams will be available soon. Please check the EventModeling twitter account.
 
 ## [Realtime Board Template](#realtime-board-template) {#realtime-board-template}
 
