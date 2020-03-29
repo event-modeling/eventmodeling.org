@@ -14,25 +14,25 @@ In this post we'll explore taking advantage of using state from both the user's 
 
 The key aspect of the approach is to show the system changing over time. To show an easy example we will start from the left and work our way to the right to see how a system is designed logically and with only the pieces of information we need in order to accomplish the example workflow.
 
-## User Interface
+## [User Interface](#user-interface) {#user-interface}
 
 We begin by designing the screen that a user will see initially.
 
 ![First Screen](first-screen.jpg)
 
-## Events
+## [Events](#events) {#events}
 
 Events happen - whether we store them or not is our choice. In this case we don't - at least not directly. We show what the user is inputting into the system. We show how this information is recorded. In this case we can show that the system requires the storage of a hash, because storing passwords directly is not secure (see the following section). Because we have this shown on our event model, we can discuss, if need be, to non-technical people why this is important and where it comes into effect when they interacting with the system.
 
 ![Fist Event](first-event.jpg)
 
-## Tables
+## [Tables](#tables) {#tables}
 
 So far we have captured what the user saw, and then what they ended up doing in terms of facts as events. The table representation is represented by a set of swim lanes that correspond to records - or rows. This allows us to see where data is updated, inserted, deleted and more importantly attached to different workflow steps. Since this form of representation takes a lot of room, it is shown at the bottom so it will not displace the other artifacts. 
 
 ![First Table](first-table.jpg)
 
-## Views
+## [Views](#views) {#views}
 
 As we move to the next page in our application, we may show some of the information the user has entered. It's important to show exactly where this information is coming from. This allows us to show where each step of our workflow has its dependencies. Even though the id is not shown on the page, it is important information that is used to get the email we are interested in.
 
@@ -40,13 +40,13 @@ As we move to the next page in our application, we may show some of the informat
 
 This completes the very basic input and feedback cycle that makes up Event Models. In the next installment to this post, we will add further functionality that will show how we can use Event Modeling to not incur this increasing cost. We'll also address the same patterns for automation and translation but without the event sourced paradigm of the previous post.
 
-## Automation
+## [Automation](#automation) {#automation}
 
 We show the email being sent as a service that runs for us. We can show exactly where the state of the workflow in sending the verification email is exactly. This may already impact some of the work that we have done before had we started implementing it. Because we are planning, we can make sure that the schema we create is done properly the first time. We'll use a column called "code" to track the state of email verification.
 
 ![Automation](automation.jpg)
 
-## Re-work
+## [Re-work](#re-work) {#re-work}
 
 Being efficient with storage requires re-opening the design of existing tables as we add new features to our system. It is this rework that is responsible for features costing more and more as the size of the whole system grows. The following graph shows features A through G becoming more expensive. They are propped up needing to adjust previous already completed functionality.
 
@@ -64,7 +64,7 @@ If we, however, wait until we find a place for all data in the system, and descr
 
 Being able to get work that can effectively cost the same amount no matter when it is programmed is essential for removing risk from projects by having a reliable budget and schedule.
 
-## Small Design Up Front (SDUF)
+## [Small Design Up Front (SDUF)](#sduf) {#sduf}
 
 The scapegoat of modern approaches like agile, waterfall is a name given to doing too much planning so we don't get going soon enough. This was always painted as a very costly investment of a year in very bureaucratic large organisations.
 
@@ -72,28 +72,28 @@ The scapegoat of modern approaches like agile, waterfall is a name given to doin
 
 But what if we didn't need "Big" design? Event Modeling is the idea that by focusing on the important parts of design only, we effectively make it small. Because it's small, we can do it quickly.
 
-## Data Loss
+## [Data Loss](#data-loss) {#data-loss}
 
 What happens when we update information? It is deleted. We lose a piece of history that may be crucial in helping us troubleshoot issues in our solution. The event model shows where we have these losses. We can discuss whether we should account for the history of some more important records - or if it's worth it to switch to a loss-less store entirely.
 
-## Audience
+## [Audience](#audience) {#audience}
 
 One would think that this is something that would be more technical compared to the event model of an event sourced systems. That may be true, but what is the cost of all roles in an organization understanding where the information they deal with is located. This should not be a bigger burden for understanding. So we must aim to keep from adding any code or logic to the event model. Just like before, if we stick to following the evidence of how information is changing over time in the system, we speak to a much larger audience. Understanding the system is key to everyone having insight into the complexity and effort needed to deal with the demands of the business.
 
-## Legacy Code
+## [Legacy Code](#legacy-code) {#legacy-code}
 
 When we look at really brittle systems that have been over-complicated, we had a strategy to freeze the codebase and instrument some listeners on the state to enable a side-car approach to bug fixes and extending the system's functionality. However, we may now use the Event Model to analyze the system from the point of view of state.
 
-### The Refactor
+### [The Refactor](#refactor) {#refactor}
 
 Traditionally, trying to refactor a code base was done with a focus on the structure of the logic. This certainly limited the audience to only developers. The scope of the changes can now be shown by ensuring that areas of code we want to address will certainly not affect state in places we don't expect. This audit allows us to define scope to what our refactoring is going affect. This will allow us to rely on a smaller number of regression tests to ensure we have not affected other areas that are working or need to remain unchanged.
 
-### The Rewrite
+### [The Rewrite](#rewrite) {#rewrite}
 
 If we manage to get a sufficient amount of example workflow data from our event model in a traditional system, we are in a better situation to reach success when we re-implement from the beginning. Like with Event Modeling an event sourced system, our coupled workflow rewrite efforts should give us estimates that are drawn from empirical data that can be anchored in other constructs exhibited by this model such as # of workflow steps affected by when implementing specific vertical slices.
 
 Although not as straight forward as the event sourced approach, we still can get better estimates based on empirical data. The removal of subjectivity is key to having a more reasonable expectation of a project.
 
-## Conclusion
+## [Conclusion](#conclusion) {#conclusion}
 
 Fred Brooks was right about the power of only considering tables. His statement can be extended in meaning to apply to any form of information persistence in a system. Even though we don't store events, they still are the most effective way to describe what a system is supposed to be doing - especially if done by example.
