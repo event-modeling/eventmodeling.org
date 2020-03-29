@@ -19,6 +19,10 @@ This is the first public recording of a talk on Event Modeling. It was recorded 
 
 {{< youtube htxlr8QxeGc >}}
 
+This is a discussion with Roy Osherove about Event Modeling and Event Sourcing. It gets into details of implementing systems using event storming that are described with event modeling.
+
+{{< youtube tkn1p7LUY2o >}}
+
 ## [Workshops](#workshops) {#workshops}
 
 These are the upcoming workshops around the globe that are about or include Event Modeling:
