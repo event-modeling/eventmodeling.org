@@ -23,6 +23,10 @@ This is a discussion with Roy Osherove about Event Modeling and Event Sourcing. 
 
 {{< youtube tkn1p7LUY2o >}}
 
+A community discussion with the Copenhagen DDD meetup group done remotely. Here we start some Event Modeling exercises.
+
+{{< youtube U_MwAEf8V_A >}}
+
 ## [Workshops](#workshops) {#workshops}
 
 These are the upcoming workshops around the globe that are about or include Event Modeling:
