@@ -24,10 +24,10 @@ name = "Home"
 url = "/"
 weight = 1
 
-[[menu.main]]
-name = "All posts"
-url = "/posts"
-weight = 2
+#[[menu.main]]
+#name = "All posts"
+#url = "/posts"
+#weight = 2
 
 [[menu.main]]
 name = "Resources"
@@ -38,11 +38,6 @@ weight = 3
 name = "About"
 url = "/about"
 weight = 4
-
-[[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 5
 
 [[params.social]]
 name = "Github"
@@ -58,6 +53,3 @@ url = "https://twitter.com/eventmodeling"
 name = "RSS"
 icon = "rss"
 url = "/index.xml"
-
-[taxonomies]
-   tag = "tags"
