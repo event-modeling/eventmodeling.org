@@ -13,7 +13,7 @@ Many systems that have been automated in more recent history do use events as th
 
 ![chart](meta-chart.png)      
 
-The challenge of automating, especially, non-trivial systems is the rising cost curve for further changes as the system grows in complexity. Most of this in automation has to do with re-work (shown as red boxes below). Event Modeling minimizes the amount of rework by working off of a blue print that can be created in a very short time compared to existing methodologies.
+The challenge of automating, especially, non-trivial systems is the rising cost curve for further changes as the system grows in complexity. Most of this extra cost of automation has to do with re-work (shown as red boxes below). Event Modeling minimizes the amount of rework by working off of a blue print that can be created in a very short time compared to existing design and modeling methodologies.
 
 ![cost comparison](cost-comparison.jpg)
 
