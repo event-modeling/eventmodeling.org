@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main class="max-w-screen-xl mx-auto pt-12 pb-5 px-4">
+<main class="max-w-screen-md mx-auto px-4">
   <div class="post-header">
     <h1 class="title">{{ .Title }}</h1>
     <div class="meta">Posted at &mdash; {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span
@@ -35,9 +35,10 @@
   {{- else if and (isset .Params "disqus") (eq .Params.disqus true) -}}
   {{- $.Scratch.Set "isDisqus" true -}}
   {{- end -}}
-
-  {{- if eq ($.Scratch.Get "isDisqus") true -}}
-  {{- partial "disqus.html" . -}}
-  {{- end -}}
 </main>
+
+{{- if eq ($.Scratch.Get "isDisqus") true -}}
+{{- partial "disqus.html" . -}}
+{{- end -}}
+
 {{ end }}
