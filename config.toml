@@ -1,7 +1,7 @@
 baseURL = "https://eventmodeling.org/"
 languageCode = "en-us"
 title = "Event Modeling"
-theme = "ezhil"
+theme = "ubi"
 
 pygmentsstyle = "vs"
 pygmentscodefences = true
@@ -25,7 +25,7 @@ url = "/"
 weight = 1
 
 [[menu.main]]
-name = "All posts"
+name = "Blog"
 url = "/posts"
 weight = 2
 
@@ -38,11 +38,6 @@ weight = 3
 name = "About"
 url = "/about"
 weight = 4
-
-[[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 5
 
 [[params.social]]
 name = "Github"
