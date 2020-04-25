@@ -53,6 +53,3 @@ url = "https://twitter.com/eventmodeling"
 name = "RSS"
 icon = "rss"
 url = "/index.xml"
-
-[taxonomies]
-   tag = "tags"

@@ -7,13 +7,27 @@ draft: false
 
 ## [Slack Group](#slack-group) {#slack-group}
 
-The community needed a non-technical discussion on Information System design. The Slack channel was created to create an environment where this type of discussion could happen and allow a new avenue for the practice to get adopted. You can join the community throught this [link](https://join.slack.com/t/eventmodeling/shared_invite/enQtNzE0NjAyMjMwNjQ2LTY1NjgzZWI4ZjE0NmM0MWU0OGQwNjA3ZTZkZWViYWUzMTRjZWViYzdhZWMzNWMwZjQyM2VhMWVjZWQ5NjNjMjU)
+The community needed a non-technical discussion on Information System design. The Slack channel was created to create an environment where this type of discussion could happen and allow a new avenue for the practice to get adopted. You can join the community through this link:
 
-## [Intro Video](#intro-video) {#intro-video}
+[![slack](Slack_RGB.png)](https://join.slack.com/t/eventmodeling/shared_invite/enQtNzE0NjAyMjMwNjQ2LTY1NjgzZWI4ZjE0NmM0MWU0OGQwNjA3ZTZkZWViYWUzMTRjZWViYzdhZWMzNWMwZjQyM2VhMWVjZWQ5NjNjMjU)
 
-This is a more recent video of Event Modeling being explained to the DDD Greece meetup group.
+## [Intro Videos](#intro-videos) {#intro-videos}
+
+A community discussion with the Copenhagen DDD meetup group done remotely. Here we start some Event Modeling exercises.
+
+{{< youtube U_MwAEf8V_A >}}
+
+Event Modeling being explained to the DDD Greece meetup group.
 
 {{< youtube SqaDYwgQ664 >}}
+
+This is an event model of an OAuth2 system shown from event modeling to implementation in Go.
+
+{{< youtube 32lvL_Un8ko >}}
+
+An example project starting with Event Modeling and going all the way through to implementation. It's in Polish but the model and code is in English. A translation should be out in the near future.
+
+{{< youtube FgeLPCiugfA >}}
 
 This is the first public recording of a talk on Event Modeling. It was recorded at the Event-Driven Meetup in Seattle, WA. James Nugent was presenting on the Raft consensus algorithm that same night.
 
@@ -22,10 +36,6 @@ This is the first public recording of a talk on Event Modeling. It was recorded 
 This is a discussion with Roy Osherove about Event Modeling and Event Sourcing. It gets into details of implementing systems using event storming that are described with event modeling.
 
 {{< youtube tkn1p7LUY2o >}}
-
-A community discussion with the Copenhagen DDD meetup group done remotely. Here we start some Event Modeling exercises.
-
-{{< youtube U_MwAEf8V_A >}}
 
 ## [Workshops](#workshops) {#workshops}
 
