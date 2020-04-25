@@ -27,13 +27,13 @@
   </a>
   <div class="mt-6 flex items-center">
     <div class="flex-shrink-0">
-      <a href="#">
+      <a href="{{ $author.home_link }}">
         <img class="h-10 w-10 rounded-full" src="{{ $author.avatar }}" alt="{{ $author.display_name }}'s avatar" />
       </a>
     </div>
     <div class="ml-3">
       <p class="text-sm leading-5 font-medium text-gray-900">
-        <a href="#">
+        <a href="{{ $author.home_link }}">
           {{ $author.display_name }}
         </a>
       </p>
