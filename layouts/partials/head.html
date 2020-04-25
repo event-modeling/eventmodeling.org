@@ -9,8 +9,11 @@
           'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-N88JZ7B');</script>
   <!-- End Google Tag Manager -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   {{- $title := ( .Title ) -}}
   {{- $siteTitle := ( .Site.Title ) -}}
   {{- if .IsHome -}}
@@ -33,12 +36,6 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="{{ .Site.BaseURL }}css/tailwind.css" />
 
-  {{ if and (isset .Site.Params "social") (isset .Site.Params "feathericonscdn") (eq .Site.Params.featherIconsCDN true) -}}
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-  {{- else if (isset .Site.Params "social") -}}
-  <script src="{{ .Site.BaseURL }}js/feather.min.js"></script>
-  {{ end }}
-  <script src="{{ .Site.BaseURL }}js/main.js"></script>
   {{- if isset .Site.Params "customjs" -}}
   {{- range .Site.Params.customJS }}
   <script src="{{ $.Site.BaseURL }}{{ . }}"></script>
