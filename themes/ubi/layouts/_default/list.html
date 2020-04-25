@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  {{ partial "header.html" . }}
+  {{ partial "head.html" . }}
 
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -8,7 +8,7 @@
         style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="container wrapper list">
-      {{ partial "head.html" . }}
+      {{ partial "header.html" . }}
 
       {{ if isset .Data "Term" }}
       <h1>Entries tagged - "{{ .Data.Term }}"</h1>
