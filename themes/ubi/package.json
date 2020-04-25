@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "tailwind build ./assets/styles.css -o ./static/css/tailwind.css"
+  },
+  "dependencies": {
+    "@tailwindcss/ui": "^0.2.2",
+    "@straw-hat/prettier-config": "^1.0.1",
+    "tailwindcss": "^1.3.5"
+  }
+}

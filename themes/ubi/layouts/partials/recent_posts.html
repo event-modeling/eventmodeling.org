@@ -1,0 +1,98 @@
+<div class="pt-16 pb-20 px-4">
+  <div class="max-w-screen-xl mx-auto">
+    <h2 class="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 pb-12">
+      Recent posts
+    </h2>
+    <div class="grid gap-16 lg:grid-cols-3 lg:col-gap-5 lg:row-gap-12">
+      {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+      {{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
+      {{ range $paginator.Pages }}
+      {{ $author := index .Site.Data.authors .Params.author }}
+      <div>
+        <div>
+          <a href="{{ .RelPermalink }}" class="inline-block">
+            {{ range .Keywords }}
+            <span
+              class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
+              {{ . }}
+            </span>
+            {{ end }}
+          </a>
+        </div>
+        <a href="{{ .RelPermalink }}" class="block">
+          <h3 class="mt-4 text-xl leading-7 font-semibold text-gray-900">
+            {{.Title}}
+          </h3>
+          <p class="mt-3 text-base leading-6 text-gray-500">
+            {{ if isset .Params "description" }}
+            {{ .Description }}
+            {{ else if gt (len .RawContent) 120 }}
+            {{ slicestr .RawContent 0 120 }}...
+            {{ else }}
+            {{ .RawContent }}
+            {{ end }}
+          </p>
+        </a>
+        <div class="mt-6 flex items-center">
+          <div class="flex-shrink-0">
+            <a href="#">
+              <img class="h-10 w-10 rounded-full" src="{{ $author.avatar }}" alt="" />
+            </a>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm leading-5 font-medium text-gray-900">
+              <a href="#">
+                {{ $author.display_name }}
+              </a>
+            </p>
+            <div class="flex text-sm leading-5 text-gray-500">
+              <time datetime="2020-03-16">
+                {{ dateFormat "Jan 2, 2006" .Date }}
+              </time>
+              <span class="mx-1">
+                &middot;
+              </span>
+              <span>
+                {{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
+                {{ math.Floor (div $readTime 60) }} minutes
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{ end }}
+
+
+    </div>
+  </div>
+</div>
+
+<div class="container wrapper">
+  <div class="recent-posts section">
+    <h2 class="section-header">
+      Recent posts
+    </h2>
+    <div class="posts">
+      {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+      {{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
+      {{ range $paginator.Pages }}
+      <div class="post">
+        <div class="meta">{{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span>
+          {{ end }}</div>
+        <a class="title" href="{{ .RelPermalink }}">{{.Title}}</a> &mdash;
+        <span class="description">
+          {{ if isset .Params "description" }}
+          {{ .Description }}
+          {{ else if gt (len .RawContent) 120 }}
+          {{ slicestr .RawContent 0 120 }}...
+          {{ else }}
+          {{ .RawContent }}
+          {{ end }}
+        </span>
+      </div>
+      {{ end }}
+      {{ template "partials/paginator.html" . }}
+    </div>
+  </div>
+</div>
