@@ -2,7 +2,8 @@
 title: "Event Modeling Traditional Systems"
 date: 2020-03-14T19:15:58-07:00
 description: "Event Modeling can be applied in designing systems that will store state in traditional databases. By providing a more thorough design, the solution can be implemented with a lot less waste that usually comes in the form of having to re-visit finished items as the solution is built up."
-tags: [Intro, Background, Theory]
+keywords: [Intro, Background, Theory]
+author: adymitruk
 ---
 
 ![Fred Brooks](fred_brooks.jpg)
@@ -28,7 +29,7 @@ Events happen - whether we store them or not is our choice. In this case we don'
 
 ## [Tables](#tables) {#tables}
 
-So far we have captured what the user saw, and then what they ended up doing in terms of facts as events. The table representation is represented by a set of swim lanes that correspond to records - or rows. This allows us to see where data is updated, inserted, deleted and more importantly attached to different workflow steps. Since this form of representation takes a lot of room, it is shown at the bottom so it will not displace the other artifacts. 
+So far we have captured what the user saw, and then what they ended up doing in terms of facts as events. The table representation is represented by a set of swim lanes that correspond to records - or rows. This allows us to see where data is updated, inserted, deleted and more importantly attached to different workflow steps. Since this form of representation takes a lot of room, it is shown at the bottom so it will not displace the other artifacts.
 
 ![First Table](first-table.jpg)
 
@@ -52,13 +53,13 @@ Being efficient with storage requires re-opening the design of existing tables a
 
 ![Rework](rework.jpg)
 
-Feature D requires the rework of feature A. Feature E requires feature B to be cracked open and adjusted. It gets worse as the solution grows. Feature F depends on both features A and B both being re-addressed. This can get much worse as this type of dependency can start to stack. Feature G depends on adjusting feature F which precipitates to refactoring features A and B again. 
+Feature D requires the rework of feature A. Feature E requires feature B to be cracked open and adjusted. It gets worse as the solution grows. Feature F depends on both features A and B both being re-addressed. This can get much worse as this type of dependency can start to stack. Feature G depends on adjusting feature F which precipitates to refactoring features A and B again.
 
-We have an example of this when we added the verification feature to our sign up example at the beginning of the article. When we needed to store the verification code, we had to add a column to the user table. 
+We have an example of this when we added the verification feature to our sign up example at the beginning of the article. When we needed to store the verification code, we had to add a column to the user table.
 
-The key point is: If we were implementing the solution as we were designing, we would have to go back and add that capability to the insert statement. 
+The key point is: If we were implementing the solution as we were designing, we would have to go back and add that capability to the insert statement.
 
-If we, however, wait until we find a place for all data in the system, and describe how it changes in an event model, we eliminate nearly all the rework. 
+If we, however, wait until we find a place for all data in the system, and describe how it changes in an event model, we eliminate nearly all the rework.
 
 ![Flat Cost Curve](flat-cost.jpg)
 
@@ -68,7 +69,7 @@ Being able to get work that can effectively cost the same amount no matter when 
 
 The scapegoat of modern approaches like agile, waterfall is a name given to doing too much planning so we don't get going soon enough. This was always painted as a very costly investment of a year in very bureaucratic large organisations.
 
-"No Big Design Up Front" known as BDUF has been a war-cry of agilists to get going to cut through red tape and get things done - relying on tight feedback loops to take care of design instead through "emergent design". 
+"No Big Design Up Front" known as BDUF has been a war-cry of agilists to get going to cut through red tape and get things done - relying on tight feedback loops to take care of design instead through "emergent design".
 
 But what if we didn't need "Big" design? Event Modeling is the idea that by focusing on the important parts of design only, we effectively make it small. Because it's small, we can do it quickly.
 
