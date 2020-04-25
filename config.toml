@@ -1,7 +1,6 @@
 baseURL = "https://eventmodeling.org/"
 languageCode = "en-us"
 title = "Event Modeling"
-theme = "ubi"
 
 pygmentsstyle = "vs"
 pygmentscodefences = true
