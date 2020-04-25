@@ -1,8 +1,8 @@
 {{ define "main" }}
 <main class="max-w-screen-xl mx-auto pt-12 pb-5 px-4">
-  <h2 class="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 pb-12">
+  <h1 class="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 pb-12">
     Posts
-  </h2>
+  </h1>
   <div class="grid gap-16">
     {{- range .Data.Pages -}}
     {{ partial "mini_post.html" . }}
