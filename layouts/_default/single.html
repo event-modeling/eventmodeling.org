@@ -7,11 +7,11 @@
           class="draft-label">DRAFT</span> {{ end }}</div>
     </div>
 
-    <div class="blog-post">
+    <div class="markdown">
       {{ .Content }}
     </div>
 
-    <div class="markdown">
+    <div class="post-tags">
       {{ if ne .Type "page" }}
       {{ if gt .Params.tags 0 }}
       <nav class="nav tags">
