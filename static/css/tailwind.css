@@ -888,6 +888,320 @@ video {
   border-color: transparent;
 }
 
+/* @apply text-gray-700;
+  @apply leading-relaxed; */
+
+.blog-post > *:first-child {
+  margin-top: 0;
+}
+
+.blog-post > * + * {
+  margin-top: 1.5rem;
+}
+
+.blog-post > ul > * + *,
+  .blog-post > ol > * + * {
+  margin-top: 1rem;
+}
+
+.blog-post .subnav,
+  .subnav.blog-post {
+  display: flex;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom-width: 2px;
+  border-color: #d2d6dc;
+}
+
+.blog-post .subnav .subnav-link,
+    .subnav-link.blog-post .subnav,
+    .subnav.blog-post .subnav-link,
+    .subnav-link.subnav.blog-post {
+  margin-right: 1.5rem;
+  line-height: 1;
+  color: #161e2e;
+  font-size: 0.875rem;
+}
+
+.blog-post > h2::before,
+  .blog-post > h3::before,
+  .blog-post > .heading::before {
+  display: block;
+  height: 6rem;
+  margin-top: -6rem;
+  visibility: hidden;
+  content: '';
+}
+
+.blog-post > hr {
+  border-top-width: 0;
+  border-right-width: 0;
+  border-left-width: 0;
+  border-bottom-width: 2px;
+  border-color: #e5e7eb;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.blog-post > a,
+  .blog-post > p a,
+  .blog-post > ul li a,
+  .blog-post > ol li a,
+  a.blog-post {
+  color: #3f83f8;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.blog-post > a:hover, .blog-post > p a:hover, .blog-post > ul li a:hover, .blog-post > ol li a:hover, a.blog-post:hover {
+  color: #1a56db;
+}
+
+.blog-post > a strong, .blog-post > p a strong, .blog-post > ul li a strong, .blog-post > ol li a strong, a.blog-post strong {
+  color: #3f83f8;
+}
+
+.blog-post > a code, .blog-post > p a code, .blog-post > ul li a code, .blog-post > ol li a code, a.blog-post code {
+  text-decoration: underline;
+  color: #3f83f8;
+}
+
+.blog-post > p strong,
+  .blog-post > ul strong {
+  font-weight: 600;
+  color: #252f3f;
+}
+
+.blog-post > p code,
+  .blog-post > ul li *:not(pre) code,
+  .blog-post > ul li > code,
+  .blog-post > ol li *:not(pre) code,
+  .blog-post > ol li > code,
+  p.blog-post code.blog-post {
+  display: inline-block;
+  background-color: #f4f5f7;
+  border-radius: 0.125rem;
+  font-size: 0.875rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  line-height: 1;
+  white-space: nowrap;
+  color: #7e3af2;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  vertical-align: baseline;
+  font-weight: 400;
+}
+
+.blog-post > p strong code,
+  .blog-post > ul li strong code,
+  .blog-post > ol li strong code {
+  font-weight: 600;
+}
+
+.blog-post > pre,
+  pre.blog-post {
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  border-radius: 0.5rem;
+  font-weight: 400;
+  scrollbar-width: none;
+}
+
+.blog-post > pre::-webkit-scrollbar, pre.blog-post::-webkit-scrollbar {
+  display: none;
+}
+
+.blog-post > blockquote,
+  blockquote.blog-post {
+  font-style: italic;
+  color: #161e2e;
+  font-size: 0.875rem;
+}
+
+.blog-post > h1,
+  h1.blog-post {
+  margin-bottom: 0.25rem;
+  line-height: 1;
+  color: #161e2e;
+  font-weight: 500;
+  font-size: 1.875rem;
+}
+
+.blog-post > h2,
+  h2.blog-post {
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  color: #161e2e;
+  line-height: 1;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.blog-post > h2 + h3 {
+  margin-top: 1.5rem;
+}
+
+.blog-post > h3,
+  h3.blog-post {
+  margin-top: 3rem;
+  margin-bottom: -0.75rem;
+  color: #161e2e;
+  line-height: 1.25;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.blog-post > h4,
+  h4.blog-post {
+  margin-top: 3rem;
+  margin-bottom: 0;
+  color: #161e2e;
+  line-height: 1.375;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+.blog-post > h1 + p {
+  margin-top: 2rem;
+}
+
+.blog-post > h1 > code,
+  .blog-post > h2 > code,
+  .blog-post > h3 > code,
+  .blog-post > h4 > code {
+  color: #7e3af2;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.blog-post > h3 > code {
+  font-size: 1.125rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  background-color: #f4f5f7;
+}
+
+.blog-post > h4 > code {
+  font-size: 1rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  background-color: #f4f5f7;
+}
+
+.blog-post > p,
+  p.blog-post,
+  .blog-post > blockquote > p {
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+
+.blog-post > ul:not(.list-none) {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.blog-post > ul:not(.list-none) li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.blog-post > ul:not(.list-none) li::before {
+  position: absolute;
+  left: 0;
+  color: #9fa6b2;
+  display: inline-block;
+  margin-right: 0.75rem;
+  content: '\2022';
+}
+
+.blog-post > ol {
+  list-style-type: none;
+  counter-reset: item;
+}
+
+.blog-post > ol > li {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.blog-post > ol > li::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: #d2d6dc;
+  border-radius: 9999px;
+  color: #374151;
+  font-size: 0.75rem;
+  font-weight: 700;
+  content: counter(item);
+  counter-increment: item;
+}
+
+.blog-post > :not(pre):not(h1):not(h2):not(h3):not(h4) > code,
+  .blog-post > ul code,
+  .blog-post > ol code {
+  background-color: #f4f5f7;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.blog-post > pre,
+  pre.blog-post,
+  .blog-post > ul li pre,
+  .blog-post > ol li pre {
+  display: flex;
+  padding: 0;
+  background-color: #252f3f;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.blog-post > pre code,
+  pre code.blog-post,
+  .blog-post > ul li pre code,
+  .blog-post > ol li pre code {
+  padding: 1rem;
+}
+
+.blog-post > table {
+  width: 100%;
+  text-align: left;
+}
+
+.blog-post > table th {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  padding: 0.5rem;
+  background-color: #f4f5f7;
+}
+
+.blog-post > table td {
+  padding: 0.5rem;
+  border-top-width: 1px;
+  border-color: #e5e7eb;
+  font-size: 0.875rem;
+}
+
+.blog-post > table td code {
+  background-color: #f4f5f7;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+  color: #6c2bd9;
+  vertical-align: baseline;
+}
+
+.blog-post > table td:first-child {
+  border-color: #d2d6dc;
+}
+
 .space-y-0 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
