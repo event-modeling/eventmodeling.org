@@ -906,6 +906,11 @@ video {
   margin-top: 1rem;
 }
 
+.markdown img {
+  max-width: 100%;
+  margin: auto;
+}
+
 .markdown .subnav,
   .subnav.markdown {
   display: flex;
@@ -1018,6 +1023,10 @@ video {
   font-style: italic;
   color: #161e2e;
   font-size: 0.875rem;
+  border-left-width: 4px;
+  padding-left: 1.25rem;
+  border-color: #9061f9;
+  border-style: solid;
 }
 
 .markdown > h1,
