@@ -17,6 +17,10 @@ The challenge of automating, especially, non-trivial systems is the rising cost 
 
 ![cost comparison](cost-comparison.jpg)
 
-Depending on your comfort or ability to use either approaches to automate systems, event modeling can be used to describe multiple strategies or combinations of them. The 2 main articles below explain how to use Event Modeling using either traditional or event-based systems. Either way the majority of the information around the motivation and concepts is found in the "Event Modeling: What is it?" article.
+Depending on your comfort or ability to use either approaches to automate systems, event modeling can be used to describe multiple strategies or combinations of them. The 2 main articles below explain how to use Event Modeling using either traditional or event-based systems. 
+
+**Please continue reading about Event Modeling in [the original "Event Modeling: What is it?" article](/posts/what-is-event-modeling).**
+
+
 
 

@@ -24,10 +24,10 @@ name = "Home"
 url = "/"
 weight = 1
 
-#[[menu.main]]
-#name = "All posts"
-#url = "/posts"
-#weight = 2
+[[menu.main]]
+name = "Blog"
+url = "/posts"
+weight = 2
 
 [[menu.main]]
 name = "Resources"
