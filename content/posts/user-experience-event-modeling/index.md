@@ -2,7 +2,8 @@
 title: "Great User Experience Demands Event Modeling"
 date: 2020-04-30T22:01:58-07:00
 description: "Implementing software products that increase market share and profits require comprehensive and complete understanding of the context and measures audiences need to be successful. Event modeling is leaps and bounds ahead of all other techniques in context and measures collaboration."
-tags: [User Experience, Context, Measures]
+keywords: [User Experience, Context, Measures]
+author: elau
 ---
 
 ![Helplessness and Chaos](helplessness-chaos.jpg)
