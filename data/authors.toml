@@ -7,3 +7,8 @@ home_link = "https://twitter.com/adymitruk"
 display_name = "Eric Lau"
 avatar = "https://media-exp1.licdn.com/dms/image/C4E03AQE8ENqMWhEHMA/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=_B0Wjz1Xk-3N-LvIFDqoxlWa9gyVv1lFe7hLn1BSRUo"
 home_link = "https://www.linkedin.com/in/ericlau01/"
+
+[rmaciag]
+display_name = "Rafal Maciag"
+avatar = "https://rafalmaciag.github.io/rafalmaciag/img/rm_200x200.jpg";
+home_link = "https://www.linkedin.com/in/rafalmaciag/"
