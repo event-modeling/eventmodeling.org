@@ -1,10 +1,16 @@
 ---
-title: "Event Modeling Traditional Systems"
-date: 2020-03-14T19:15:58-07:00
-description: "Event Modeling can be applied in designing systems that will store state in traditional databases. By providing a more thorough design, the solution can be implemented with a lot less waste that usually comes in the form of having to re-visit finished items as the solution is built up."
-keywords: [Intro, Background, Theory]
+title: "Specifying Complex Views"
+date: 2020-05-21T19:15:58-07:00
+description: "Many core parts of an information system are complex. Viewing the information at this point in the workflow may itself be complex, or the logic behind it may be complex. Event Modeling takes the 'by example' approach to this specification but has some efficiencies around the structure of such specification."
+keywords: [Intro, Background, Application, Specification]
 author: adymitruk
+draft: true
 ---
+When we look at an event model, we follow the path through the system given one set of permutations. But that is not enough to satisfy communicating all the different permutations and possibilities at a key point in that workflow. We'll examine those points in the workflow and show how information presentation (view) is specified to the level of adequate requirements to begin implementing the system.
+
+This is where the event model is elaborated upon via a variant of the "Given-When-Then" story format. 
+
+
 
 ![Fred Brooks](fred_brooks.jpg)
 > "Show me your flowcharts and conceal your tables, and I shall continue to be mystified. Show me your tables, and I won’t usually need your flowcharts; they’ll be obvious" -- <cite>Fred Brooks, author Mythical Man-Month</cite>

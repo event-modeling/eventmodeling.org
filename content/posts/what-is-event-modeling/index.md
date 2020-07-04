@@ -2,7 +2,8 @@
 title: "Event Modeling: What is it?"
 date: 2019-06-23T19:01:58+07:00
 description: "Event Modeling is a way to design a blueprint for an Information System of any size or scale. It is done in a way that allows the clearest communication of the system's workings to the largest possible cross-section of roles in an organization. The system can be checked for completeness by following the single thread of data propagation through it."
-tags: [Intro, Background, Theory]
+keywords: [Intro, Background, Theory]
+author: adymitruk
 ---
 ## [Motivation](#motivation) {#motivation}
 
@@ -15,7 +16,7 @@ With the advent of the transistor, the speed and accuracy of processing informat
 
 Story telling is something that enables humans to pass knowledge on to subsequent generations and relies heavily on how we store memories - whether logical, visual, auditory or other. This is important because there is a parallel with how information systems were constructed. There is a "memory" of all your visits to the doctor. It's the ledger of the forms that are filled in with each visit.
 
-Specifications by example are a way to show how something is supposed to work. This can be seen in successful practices in software such as Behaviour Driven Development. This works well because we communicate by stories more effectively. It ties back to story telling as a way to keep information in society. Our brains are built for it more than they are built for flow-charts and other formats. 
+Specifications by example are a way to show how something is supposed to work. This can be seen in successful practices in software such as Behaviour Driven Development. This works well because we communicate by stories more effectively. It ties back to story telling as a way to keep information in society. Our brains are built for it more than they are built for flow-charts and other formats.
 
 ## [Life After the Dawn of the Computer Age](#life-after){#life-after}
 
@@ -107,7 +108,7 @@ Our system is going to need to communicate with external services. When the gues
 
 We show this by putting a processor in the top of our blueprint which has the wireframes. This shows that there are things not evident on the screen but are happening behind the scenes. A user may expect a spinning icon to indicate a delay due to background tasks needing to finish. The specification for this has the form of "**Given**: A view of the tasks to do, **When** This command is launched for each item, **Then** These events are expected back."
 
-In reality, these may be implemented in many different ways such as queues, reactive or real-time constructs. They may even actually be manual todo lists that our employees use. The goal here is to communicate how our system communicates with the outside world when it needs to affect it. 
+In reality, these may be implemented in many different ways such as queues, reactive or real-time constructs. They may even actually be manual todo lists that our employees use. The goal here is to communicate how our system communicates with the outside world when it needs to affect it.
 
 ## [Workshop Format - The 7 Steps](#seven-steps) {#seven-steps}
 
@@ -150,7 +151,7 @@ From the earlier section we saw that we need to show how we enable the user to c
 ![Step 5](Step-5.jpg)
 <sub>[high res version](Step-5_large.jpg)</sub>
 
-Again looking back at our goals for the blueprint, we now have to link information accumulated by storing events back into the UI via views (aka read-models). These may be things like the calendar view in our hotel system that will show the availability of rooms when a user is looking to book a room. 
+Again looking back at our goals for the blueprint, we now have to link information accumulated by storing events back into the UI via views (aka read-models). These may be things like the calendar view in our hotel system that will show the availability of rooms when a user is looking to book a room.
 
 ### [6. Apply Conway's Law](#apply-conways-law) {#apply-conways-law}
 
@@ -182,7 +183,7 @@ Many project management, business and coordination issues are mitigated by the f
 
 #### [Flat Cost Curve](#flat-cost-curve) {#flat-cost-curve}
 
-The biggest impact of using Event Modeling is the flat cost curve of the average feature cost. This is due to the fact that the effort of building each workflow step is not impacted by the development of other workflows. One important thing to understand, is that a workflow step is considered to be repeated on the event model if it uses the same command or view. 
+The biggest impact of using Event Modeling is the flat cost curve of the average feature cost. This is due to the fact that the effort of building each workflow step is not impacted by the development of other workflows. One important thing to understand, is that a workflow step is considered to be repeated on the event model if it uses the same command or view.
 
 ![flat cost curve](flat-cost-curve.jpg)
 

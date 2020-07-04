@@ -25,6 +25,8 @@ This is an event model of an OAuth2 system shown from event modeling to implemen
 
 {{< youtube 32lvL_Un8ko >}}
 
+[click here for part 2](https://www.youtube.com/watch?v=_iSiz_JBGGM)
+
 An example project starting with Event Modeling and going all the way through to implementation. It's in Polish but the model and code is in English. A translation should be out in the near future.
 
 {{< youtube FgeLPCiugfA >}}
