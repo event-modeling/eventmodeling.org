@@ -8,6 +8,7 @@ author: rmaciag
 ![Natural Human Thinking](nht.jpg)
 
 <br>
+
 IT seems to mimic so much from how the **human brain** works. Similarities are striking. It's just as if we were to build an artificial brain, sic. Let's dive in:
 * human short memory (example: you can repeat a sentence that you heard, but not yet understand it) vs processor cache
 * human operation memory vs well operation memory (RAM)
