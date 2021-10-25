@@ -4,14 +4,32 @@ date: 2019-06-27T19:48:07-07:00
 type: page
 draft: false
 ---
+# Table of content:
+1. [Community](#slack-videos)
+2. [Videos](#intro-videos)
+3. [Tools](#tools)
 
+# Community
 ## [Slack Group](#slack-group) {#slack-group}
 
 The community needed a non-technical discussion on Information System design. The Slack channel was created to create an environment where this type of discussion could happen and allow a new avenue for the practice to get adopted. You can join the community through this link:
 
 [![slack](Slack_RGB.png)](https://join.slack.com/t/eventmodeling/shared_invite/enQtNzE0NjAyMjMwNjQ2LTY1NjgzZWI4ZjE0NmM0MWU0OGQwNjA3ZTZkZWViYWUzMTRjZWViYzdhZWMzNWMwZjQyM2VhMWVjZWQ5NjNjMjU)
 
-## [Intro Videos](#intro-videos) {#intro-videos}
+## [Workshops](#workshops) {#workshops}
+
+These are the upcoming workshops around the globe that are about or include Event Modeling:
+
+Given the global situation with the COVID-19 outbreak, weekly or even daily free livestreams will be available soon. Please check the EventModeling twitter account.
+
+## [Laptop Stickers](#laptop-stickers) {#laptop-stickers}
+
+You'll be able to order these straight here for a small fee to cover printing and shipping - it's being set up right now. But the SVGs are provided as well in case you want to work on the design yourself or send it to your own printer to save on shipping and other costs.
+
+![stickers](stickers.png)
+[download](stickers.svg)
+
+# [Intro Videos](#intro-videos) {#intro-videos}
 
 A community discussion with the Copenhagen DDD meetup group done remotely. Here we start some Event Modeling exercises.
 
@@ -39,11 +57,15 @@ This is a discussion with Roy Osherove about Event Modeling and Event Sourcing. 
 
 {{< youtube tkn1p7LUY2o >}}
 
-## [Workshops](#workshops) {#workshops}
+# [Tools](#tools) {#tools}
 
-These are the upcoming workshops around the globe that are about or include Event Modeling:
+## Online Modeling Tools:
+### [Modellution (Beta)](https://www.modellution.com")
 
-Given the global situation with the COVID-19 outbreak, weekly or even daily free livestreams will be available soon. Please check the EventModeling twitter account.
+**Modellution** is a web platform designed for modeling information systems. It allows real-time visual collaboration, estimates, Jira & ClickUp integrations, and code-generation.
+There's free commercial version available.
+
+![modellution_screenshot](../Modellution.png)
 
 ## [Realtime Board Template](#realtime-board-template) {#realtime-board-template}
 
@@ -57,9 +79,3 @@ In the demos of event modeling, [Miro Realtime Board](https://miro.com) is used.
 
 This script only requires [fish shell](https://github.com/fish-shell/fish-shell) and a couple of command line utilities to show the above example work. You can find it in a gist [here](https://gist.github.com/adymitruk//7fc2adb8598ad861d4b3dae114afd4c9).
 
-## [Laptop Stickers](#laptop-stickers) {#laptop-stickers}
-
-You'll be able to order these straight here for a small fee to cover printing and shipping - it's being set up right now. But the SVGs are provided as well in case you want to work on the design yourself or send it to your own printer to save on shipping and other costs.
-
-![stickers](stickers.png)
-[download](stickers.svg)
