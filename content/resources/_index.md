@@ -18,11 +18,15 @@ The community needed a non-technical discussion on Information System design. Th
 
 ## [Workshops](#workshops) {#workshops}
 
-These are the upcoming workshops around the globe that are about or include Event Modeling:
+### Infozone Virtual Workshop on Nov 3rd 1500 - 1900 CET (Stockholm)
 
-Given the global situation with the COVID-19 outbreak, weekly or even daily free livestreams will be available soon. Please check the EventModeling twitter account.
+This online workshop will take you through the core concepts in Event Modeling along with some software walkthroughs (don't worry, no programming experience is necessary to participate). It is a virtualy event and will be hosted on Zoom with the exercises done in Miro. Please use the link below to register - seating is limited.
+
+[Pay $25 USD Registration](https://buy.stripe.com/3cseVpb954zs43S000)
 
 ## [Laptop Stickers](#laptop-stickers) {#laptop-stickers}
+
+* new designs are coming!
 
 You'll be able to order these straight here for a small fee to cover printing and shipping - it's being set up right now. But the SVGs are provided as well in case you want to work on the design yourself or send it to your own printer to save on shipping and other costs.
 
