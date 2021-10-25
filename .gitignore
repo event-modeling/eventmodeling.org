@@ -6,3 +6,6 @@ public/
 .idea/webServers.xml
 .idea/sshConfigs.xml
 node_modules
+.idea/markdown-navigator-enh.xml
+.idea/markdown-navigator.xml
+.idea/runConfigurations.xml
