@@ -1,6 +1,6 @@
 ---
 title: "Event Modeling With Evently"
-date: 2021-12-25
+date: 2021-12-27
 description: "Learn how to design your Event Model implementation with Evently as the Event Ledger."
 keywords: [Evently, Ledger, Design, Implementation, Testing]
 author: mattbishop
@@ -179,18 +179,18 @@ Factual events are cheap and easy to append to a Ledger. They have been designed
 
 ## Testing
 
-People enjoy writing unit tests for Event Model implementations because the test setup and execution does not rely on mocking services or storage systems. However, integration testing does require system state to be present and manipulable in a sandbox to ensure all the connections between components function correctly.
+People enjoy writing unit tests for Event Model implementations because test setup and execution does not rely on mocking services or storage systems for the purely-functional Command handlers, process managers and read models. However, integration testing does require system state to be present and manipulable in a sandbox to ensure all the connections between components function correctly.
 
 ![testing](testing.png)
 
-Evently plays its part in integration testing with the development Ledger type. Development Ledgers can be reset to a specific Ledger mark or event ID, or reset completely to an empty state. (In the current Evently preview, all Ledgers are development ledgers.) Evently integration test should follow this workflow:
+Evently plays its part in integration testing by offering development Ledgers. Development Ledgers can be reset to a specific Ledger mark or event ID, or reset completely to an empty state. (In the current Evently preview, all Ledgers are development ledgers.) Evently integration testing can follow this workflow:
 
 1. [Reset the Ledger](https://evently.cloud/api/#operation/get-reset-ledger-form) to the beginning or to a specific event ID / Ledger mark.
 2. Set up starting state by appending factual events.
 3. Execute tests. The tests will select events for read models and projections, and append events to the Ledger as part of their normal operation.
 4. Select events for verification. The test can then select appropriate events using replay and filter selectors to ensure the right events were appended in the right order.
 
-Once the testing has passed, the code is ready for use. In production Evently has permanent Ledgers that cannot be reset. They operate the exact same way as development Ledgers, so only the access token needs to be switched to the permanent Ledger at runtime.
+Once the testing has passed, the code is ready for use. For production uses, Evently has permanent Ledgers that cannot be reset. They operate the exact same way as development Ledgers, so only the access token needs to be switched to the permanent Ledger at runtime.
 
 ### Coming Soon…
 
