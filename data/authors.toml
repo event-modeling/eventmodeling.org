@@ -17,3 +17,8 @@ home_link = "https://www.linkedin.com/in/rafalmaciag/"
 display_name = "Sebastian Bortz"
 avatar = "https://pbs.twimg.com/profile_images/1196904725951795205/i9o8mYX0_400x400.jpg"
 home_link = "https://twitter.com/SebastianBortz"
+
+[mattbishop]
+display_name = "Matt Bishop"
+avatar = "https://pbs.twimg.com/profile_images/1125101029798793216/XenGaeia_400x400.png"
+home_link = "https://twitter.com/evently_cloud"
