@@ -16,7 +16,7 @@ Bring this sheet to your session in order to explain the pure basics.
 # Building Blocks
 On the left side there are the possible building blocks you can use in your Event Model:
 
-* **Trigger**: An Interface which can be a UI or a public Rest-API. Or an automated process# Patterns
+* **Trigger**: An Interface which can be a UI or a public Rest-API. Or an automated process
 * **Command**: Stands for an intention to change state.
 * **View**: Stands for Conclusion, Report or ReadModel.
 * **Event**: Stands for a business fact that has been saved to disk
