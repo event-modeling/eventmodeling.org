@@ -64,7 +64,7 @@ This is a discussion with Roy Osherove about Event Modeling and Event Sourcing. 
 # [Tools](#tools) {#tools}
 
 ## Online Modeling Tools:
-### [Modellution (Beta)](https://www.modellution.com")
+### [Modellution (Beta)](https://www.modellution.com)
 
 **Modellution** is a web platform designed for modeling information systems. It allows real-time visual collaboration, estimates, Jira & ClickUp integrations, and code-generation.
 There's free commercial version available.
