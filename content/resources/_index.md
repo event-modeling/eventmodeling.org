@@ -4,7 +4,7 @@ date: 2019-06-27T19:48:07-07:00
 type: page
 draft: false
 ---
-# Table of content:
+# Table of Contents:
 1. [Community](#slack-videos)
 2. [Videos](#intro-videos)
 3. [Tools](#tools)
@@ -18,22 +18,29 @@ The community needed a non-technical discussion on Information System design. Th
 
 ## [Workshops](#workshops) {#workshops}
 
-### Infozone Virtual Workshop on Nov 3rd 1500 - 1900 CET (Stockholm)
+### Vaughn Vernon's IDDD Workshop Series
 
-This online workshop will take you through the core concepts in Event Modeling along with some software walkthroughs (don't worry, no programming experience is necessary to participate). It is a virtualy event and will be hosted on Zoom with the exercises done in Miro. Please use the link below to register - seating is limited.
+#### May 11-12, 2022
 
-[Pay $25 USD Registration](https://buy.stripe.com/3cseVpb954zs43S000)
+This part of Vaughn's excellent series focuses on Event Modeling. It's a 2 day workshop where participants will learn both Event Sourcing and Event Modeling.
+
+[Workshop Page on Vaughn's Site](https://kalele.io/training/event-modeling-event-sourcing/)
 
 ## [Laptop Stickers](#laptop-stickers) {#laptop-stickers}
 
-* new designs are coming!
-
-You'll be able to order these straight here for a small fee to cover printing and shipping - it's being set up right now. But the SVGs are provided as well in case you want to work on the design yourself or send it to your own printer to save on shipping and other costs.
+You can send these to your own printer to save on shipping and other costs.
 
 ![stickers](stickers.png)
 [download](stickers.svg)
 
+![more stickers](stickers2.png)
+[download](stickers2.svg)
+
 # [Intro Videos](#intro-videos) {#intro-videos}
+
+Full mini-workshop for InfoZone.se on Event Modeling.
+
+{{< youtube gyhR5Wey6_s >}}
 
 A community discussion with the Copenhagen DDD meetup group done remotely. Here we start some Event Modeling exercises.
 
@@ -42,16 +49,6 @@ A community discussion with the Copenhagen DDD meetup group done remotely. Here 
 Event Modeling being explained to the DDD Greece meetup group.
 
 {{< youtube SqaDYwgQ664 >}}
-
-This is an event model of an OAuth2 system shown from event modeling to implementation in Go.
-
-{{< youtube 32lvL_Un8ko >}}
-
-[click here for part 2](https://www.youtube.com/watch?v=_iSiz_JBGGM)
-
-An example project starting with Event Modeling and going all the way through to implementation. It's in Polish but the model and code is in English. A translation should be out in the near future.
-
-{{< youtube FgeLPCiugfA >}}
 
 This is the first public recording of a talk on Event Modeling. It was recorded at the Event-Driven Meetup in Seattle, WA. James Nugent was presenting on the Raft consensus algorithm that same night.
 
@@ -64,6 +61,13 @@ This is a discussion with Roy Osherove about Event Modeling and Event Sourcing. 
 # [Tools](#tools) {#tools}
 
 ## Online Modeling Tools:
+
+### [ONote](onote.com)
+
+**ONote** is a browser based tool for event modeling exclusively. It focuses on the cadance of event modeling and real-time collaboration.
+
+![onote](onote.png)
+
 ### [Modellution (Beta)](https://www.modellution.com)
 
 **Modellution** is a web platform designed for modeling information systems. It allows real-time visual collaboration, estimates, Jira & ClickUp integrations, and code-generation.
@@ -71,11 +75,11 @@ There's free commercial version available.
 
 ![modellution_screenshot](../Modellution.png)
 
-## [Realtime Board Template](#realtime-board-template) {#realtime-board-template}
+## [Miro Template](#realtime-board-template) {#realtime-board-template}
 
 ![trello example](../event-modeling-tutorial.jpg)
 
-In the demos of event modeling, [Miro Realtime Board](https://miro.com) is used. If you would like to get started from a small example, you can download the example event model above from [here](/event-modeling.rtb).
+In the demos of event modeling, [Miro](https://miro.com) is used. If you would like to get started from a small example, you can download the example event model above from [here](/event-modeling.rtb).
 
 ## [Implementation Gist](#implementation-gist) {#implementation-gist}
 
