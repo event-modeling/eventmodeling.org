@@ -9,3 +9,4 @@ node_modules
 .idea/markdown-navigator-enh.xml
 .idea/markdown-navigator.xml
 .idea/runConfigurations.xml
+.hugo_build.lock
