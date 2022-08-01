@@ -61,4 +61,5 @@ There is a restriction with this pattern. On the read side of the pattern you ca
 
 ![Automation and Translation Pattern](automation-translation-pattern.jpg)
 
-[Cheat Sheet on Miro](https://miro.com/app/board/uXjVOia7ydY=/?share_link_id=194982904636)
+[Cheat Sheet on Miro](https://miro.com/app/board/uXjVOia7ydY=/?share_link_id=194982904636)  
+[Cheat Sheet on Mural](https://app.mural.co/template/33b63d5f-73ca-42ea-8886-be8e7a22908c/57bfe5ef-b3f3-46e7-a0d5-9cca8cd5995c)
