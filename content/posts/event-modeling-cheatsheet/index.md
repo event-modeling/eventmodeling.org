@@ -5,11 +5,10 @@ description: "Need a cheat sheet for the basic building blocks and how they are 
 keywords: [Event Modeling, Specification, Patterns, Building Blocks]
 author: sbortz
 ---
-
-![EventModeling Cheat Sheet](cheatsheet.jpg)
-<sub>[Download as PDF](cheatsheet.pdf), [View on Miro](https://miro.com/app/board/uXjVOia7ydY=/?share_link_id=194982904636)  </sub>
-
 **Updated article on 08-05-2022**
+
+[![EventModeling Cheat Sheet](cheatsheet.jpg)](cheatsheet.jpg)
+<sub>[Download as PDF](cheatsheet.pdf), [View on Miro](https://miro.com/app/board/uXjVOia7ydY=/?share_link_id=194982904636)  </sub>
 
 The power of Event Modeling lies in its simplicity. This cheat sheet summarizes the four building blocks that can be utilized in four different patterns.
 
