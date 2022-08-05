@@ -7,7 +7,9 @@ author: sbortz
 ---
 
 ![EventModeling Cheat Sheet](cheatsheet.jpg)
-<sub>[high res version](cheatsheet.jpg)</sub>
+<sub>[Download as PDF](cheatsheet.pdf), [View on Miro](https://miro.com/app/board/uXjVOia7ydY=/?share_link_id=194982904636)  </sub>
+
+**Updated article on 08-05-2022**
 
 The power of Event Modeling lies in its simplicity. This cheat sheet summarizes the four building blocks that can be utilized in four different patterns.
 
@@ -63,4 +65,3 @@ There is a restriction with this pattern. On the read side of the pattern you ca
 ### Slicing
 Each pattern, when modeled on the board, could be seen as a 'slice'. A slice is the smallest possible work that can be handed over to a developer for implementation. That´s because everything that a developer would need to know is explained in that slice. From the top of the architecture all the way down to the persistence level.
 
-[Cheat Sheet on Miro](https://miro.com/app/board/uXjVOia7ydY=/?share_link_id=194982904636)
