@@ -5,26 +5,20 @@ type: page
 draft: false
 ---
 # Table of Contents:
-1. [Community](#slack-videos)
+1. [Community](#discord)
 2. [Videos](#intro-videos)
 3. [Tools](#tools)
 
 # Community
-## [Slack Group](#slack-group) {#slack-group}
+## [Discord](#discord) {#discord}
 
-The community needed a non-technical discussion on Information System design. The Slack channel was created to create an environment where this type of discussion could happen and allow a new avenue for the practice to get adopted. You can join the community through this link:
+We have moved our community from Slack to Discord. The Slack channel was created to set an environment where discussions could happen and allow a new avenue for the practice to get adopted. That purpose is better served by Discord which allows community members to interact and coordinate better. You can join the community through this link:
 
-[![slack](Slack_RGB.png)](https://join.slack.com/t/eventmodeling/shared_invite/enQtNzE0NjAyMjMwNjQ2LTY1NjgzZWI4ZjE0NmM0MWU0OGQwNjA3ZTZkZWViYWUzMTRjZWViYzdhZWMzNWMwZjQyM2VhMWVjZWQ5NjNjMjU)
+[![discord](discord.png)](https://discord.gg/Sw4MvagftJ)
 
 ## [Workshops](#workshops) {#workshops}
 
-### Vaughn Vernon's IDDD Workshop Series
-
-#### May 11-12, 2022
-
-This part of Vaughn's excellent series focuses on Event Modeling. It's a 2 day workshop where participants will learn both Event Sourcing and Event Modeling.
-
-[Workshop Page on Vaughn's Site](https://kalele.io/training/event-modeling-event-sourcing/)
+coming soon
 
 ## [Laptop Stickers](#laptop-stickers) {#laptop-stickers}
 
@@ -41,6 +35,10 @@ You can send these to your own printer to save on shipping and other costs.
 Full mini-workshop for InfoZone.se on Event Modeling.
 
 {{< youtube gyhR5Wey6_s >}}
+
+Bobby Calderwood's Mini Course
+
+{{< youtube tpcgUstqECU >}}
 
 A community discussion with the Copenhagen DDD meetup group done remotely. Here we start some Event Modeling exercises.
 
