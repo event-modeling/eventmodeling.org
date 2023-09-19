@@ -18,7 +18,11 @@ We have moved our community from Slack to Discord. The Slack channel was created
 
 ## [Workshops](#workshops) {#workshops}
 
-coming soon
+![australia](australia.jpg)
+
+🦘 [November 29th, Melbourne](https://yowcon.com/melbourne-2023/masterclasses/431/hands-on-event-modeling)
+
+🐨 [December 6th, Sydney](https://yowcon.com/sydney-2023/masterclasses/432/hands-on-event-modeling) 
 
 ## [Laptop Stickers](#laptop-stickers) {#laptop-stickers}
 
