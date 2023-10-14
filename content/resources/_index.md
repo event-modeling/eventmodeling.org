@@ -70,6 +70,12 @@ This is a discussion with Roy Osherove about Event Modeling and Event Sourcing. 
 
 ![onote](onote.png)
 
+### [Evident Design](https://evidentstack.com/)
+
+**Evident Design** is the next generation successor to ONote. 
+
+![Evident Design](evident-design.png)
+
 ### [Modellution (Beta)](https://www.modellution.com)
 
 **Modellution** is a web platform designed for modeling information systems. It allows real-time visual collaboration, estimates, Jira & ClickUp integrations, and code-generation.
