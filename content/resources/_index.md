@@ -5,11 +5,17 @@ type: page
 draft: false
 ---
 # Table of Contents:
-1. [Community](#discord)
-2. [Videos](#intro-videos)
-3. [Tools](#tools)
+1. [Live Streams](#live-streams)
+2. [Community](#discord)
+3. [Videos](#intro-videos)
+4. [Tools](#tools)
 
 # Community
+
+## [Live Streams](#live-streams) {#live-streams}
+
+{{< youtube ROQs4coNYUg >}}
+
 ## [Discord](#discord) {#discord}
 
 We have moved our community from Slack to Discord. The Slack channel was created to set an environment where discussions could happen and allow a new avenue for the practice to get adopted. That purpose is better served by Discord which allows community members to interact and coordinate better. You can join the community through this link:
@@ -18,7 +24,7 @@ We have moved our community from Slack to Discord. The Slack channel was created
 
 ## [Workshops](#workshops) {#workshops}
 
-Coming soon: 2024 schedule
+Coming soon: 2024 September Event Modeling Unconference Vancouver, Canada
 
 ## [Laptop Stickers](#laptop-stickers) {#laptop-stickers}
 
