@@ -16,9 +16,31 @@ We have moved our community from Slack to Discord. The Slack channel was created
 
 [![discord](discord.png)](https://discord.gg/Sw4MvagftJ)
 
-## [Workshops](#workshops) {#workshops}
+## [Workshops and Events](#workshops) {#workshops}
 
-Coming soon: 2024 schedule
+### April:
+
+Linuxfest Northwest: Event Modeling and Event Sourcing in Open Source Projects talk. April 27-28, 2024, Bellingham, WA
+
+### May:
+
+ComoCamp: May 7-9, 2024 Vienna, Austria
+
+Polyglot Unconference: May 26th, UBC Robson Square,Vancouver, Canada
+
+### June:
+
+Event Modeling + Event Sourcing 1 Day Workshop: June 7th, Berlin, Germany
+
+Event Modeling Open Spaces: June 8, Berlin, Germany
+
+Event Modeling + Event Sourcing workshop: June 11th, Toronto, Canada
+
+Event Modeling Open Space: June 12th, Toronto, Canada
+
+### September:
+
+Event Modeling Conf: Middle September, UBC Robson Square, Vancouver, Canada
 
 ## [Laptop Stickers](#laptop-stickers) {#laptop-stickers}
 

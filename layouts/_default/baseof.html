@@ -12,6 +12,32 @@
     <a rel="me" href="https://techhub.social/@adymitruk" style="display:none;">Mastodon</a>
     <a rel="me" href="https://techhub.social/@yeray" style="display:none;">Mastodon</a>
     <a rel="me" href="https://social.vivaldi.net/@leviramsey" style="display:none;">Mastodon</a>
+
+    <div class="parallax-background" style="border: 1px solid lightgrey; width: 100%; position: absolute; z-index: -1; top: 0; background-repeat: repeat; background-image: url('/EM-background.png'); background-size: 30%; opacity: 0.15;"></div>
+    <script>      // Calculate and set the height of the div to half of the document's height
+      function setDivHeight() {
+        var div = document.querySelector('.parallax-background');
+        var docHeight = document.body.scrollHeight;
+        div.style.height = (docHeight/2 + window.innerHeight/2) + 'px';
+      }
+
+      document.addEventListener("DOMContentLoaded", setDivHeight);
+      window.addEventListener("resize", setDivHeight);
+
+      setInterval(function() {
+        var div = document.querySelector('.parallax-background');
+        var currentPos = parseInt(div.style.backgroundPositionX, 10) || 0;
+        div.style.backgroundPositionX = (currentPos - 1) + 'px';
+      }, 20);
+
+      // Parallax scrolling effect for the div
+      window.addEventListener('scroll', function() {
+        var scrolledHeight= window.pageYOffset;
+        var div = document.querySelector('.parallax-background');
+        div.style.transform = 'translate3d(0,' + (scrolledHeight * 0.5) + 'px, 0)';
+      });
+    </script>
+ 
     {{ partial "header.html" . }}
     {{ block "main" . }}{{ end }}
     {{ partial "footer.html" . }}
