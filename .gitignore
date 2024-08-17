@@ -10,3 +10,4 @@ node_modules
 .idea/markdown-navigator.xml
 .idea/runConfigurations.xml
 .hugo_build.lock
+.vscode/
