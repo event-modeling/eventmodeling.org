@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Modeling AI Tool</title>
+    <style>
+        /* Modern color scheme and typography variables */
+        :root {
+            /* Light theme */
+            --background-color-light: #f8f9fa;
+            --text-color-light: #212529;
+            --border-color-light: #dee2e6;
+            
+            /* Dark theme */
+            --background-color-dark: #212529;
+            --text-color-dark: #f8f9fa;
+            --border-color-dark: #495057;
+
+            /* Shared styles */
+            --font-family: 'Inter', sans-serif;
+            --border-radius: 4px;
+            --spacing-unit: 1rem;
+        }
+
+        /* Default to light theme */
+        :root {
+            background-color: var(--background-color-light);
+            color: var(--text-color-light);
+        }
+
+        /* Switch to dark theme when user prefers it */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                background-color: var(--background-color-dark);
+                color: var(--text-color-dark);
+            }
+        }
+        /* use a modern style for margins and padding and shadows and divs and borders */
+        root {
+            --spacing-unit: 1rem;
+            --page-margin: 1rem;
+            --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --card-border-radius: 0.5rem;
+            --container-width: 100%;
+            --column-gap: 2rem;
+        }
+
+        /* Default mobile-first styles */
+        section {
+            margin: var(--spacing-unit);
+            padding: var(--spacing-unit);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            width: calc(100% - 2 * var(--spacing-unit));
+        }
+
+        div {
+            margin: var(--spacing-unit);
+            padding: var(--spacing-unit);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            width: calc(100% - 2 * var(--spacing-unit));
+        }
+        .panel {
+            /* Adjust background to be slightly lighter/darker than the theme */
+            background-color: color-mix(in srgb, var(--background-color-light) 85%, white);
+            color: var(--text-color-light);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .panel {
+                background-color: color-mix(in srgb, var(--background-color-dark) 85%, black); 
+                color: var(--text-color-dark);
+            }
+        }
+        /* Tablet layout */
+        @media screen and (min-width: 600px) {
+            section {
+                min-width: 600px;
+                width: calc(50% - 3 * var(--spacing-unit));
+                float: left;
+            }
+            
+            div {
+                width: calc(50% - 3 * var(--spacing-unit));
+                float: left;
+            }
+        }
+
+        /* Desktop layout */
+        @media screen and (min-width: 1200px) {
+            section {
+                min-width: 800px;
+                width: calc(33.333% - 4 * var(--spacing-unit));
+            }
+            
+            div {
+                width: calc(33.333% - 4 * var(--spacing-unit));
+            }
+        }
+
+        body {
+            font-family: var(--font-family);
+        }
+        #settings {
+            display: none;
+        }
+    </style>
+    <script>
+        // event when page is loaded handler
+        document.addEventListener("DOMContentLoaded", function() {
+            const settingsButton = document.getElementById("settings-toggle-btn");
+            const settingsPanel = document.getElementById("settings");
+            
+            settingsButton.addEventListener("click", function() {
+                const isHidden = settingsPanel.style.display === "none" || settingsPanel.style.display === "";
+                settingsPanel.style.display = isHidden ? "block" : "none";
+                settingsButton.textContent = isHidden ? "Hide Settings" : "Show Settings";
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Event Modeling AI Tool</h1>
+    <!-- settings area, has a show/hide button -->
+    <section>
+        <div class="settings-toggle-container">
+            <button id="settings-toggle-btn">Show Settings</button>
+        </div>
+        <div id="settings" class="panel">
+            <h2>Settings</h2>
+            <!-- api key to open ai. it should be in a hidden text input but have a show toggle button  -->
+            <div class="api-key-container">
+                <button id="api-key-toggle-btn">Show API Key</button>
+                <input type="text" id="api-key-input" class="hidden">
+            </div>
+        </div>
+    </section>
+</body>
+</html>
