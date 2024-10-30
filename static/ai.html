@@ -104,8 +104,9 @@
         #settings {
             display: none;
         }
+
     </style>
-    <script>
+    <script defer>
         // event when page is loaded handler
         document.addEventListener("DOMContentLoaded", function() {
             const settingsButton = document.getElementById("settings-toggle-btn");
@@ -116,7 +117,19 @@
                 settingsPanel.style.display = isHidden ? "block" : "none";
                 settingsButton.textContent = isHidden ? "Hide Settings" : "Show Settings";
             });
+
+            const apiKeyButton = document.getElementById("api-key-toggle-btn");
+            
+            
+           
+
         });
+        function toggleApiKeyVisibility() {
+            const apiKeyInput = document.getElementById("api-key-input");
+            const isHidden = apiKeyInput.type === "password";
+            apiKeyInput.type = isHidden ? "text" : "password";
+            apiKeyButton.textContent = isHidden ? "Show API Key" : "Hide API Key";
+        }
     </script>
 </head>
 <body>
@@ -130,8 +143,50 @@
             <h2>Settings</h2>
             <!-- api key to open ai. it should be in a hidden text input but have a show toggle button  -->
             <div class="api-key-container">
-                <button id="api-key-toggle-btn">Show API Key</button>
-                <input type="text" id="api-key-input" class="hidden">
+                <label for="api-key-input">AI API Key:</label>
+                <button id="api-key-toggle-btn" onclick="toggleApiKeyVisibility()">Show API Key</button>
+                <input type="password" id="api-key-input" class="hidden">
+                <div class="test-ai-container">
+                    <button id="test-ai-api-call-btn">Test AI API Call</button>
+                    <textarea id="test-ai-input" placeholder="What can you do?"></textarea>
+                    <div id="test-ai-response" class="response-area"></div>
+                </div>
+                <script>
+                    document.getElementById('test-ai-api-call-btn').addEventListener('click', async () => {
+                        const apiKey = document.getElementById('api-key-input').value;
+                        const prompt = document.getElementById('test-ai-input').value;
+                        const responseArea = document.getElementById('test-ai-response');
+                        
+                        try {
+                            const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${apiKey}`
+                                },
+                                body: JSON.stringify({
+                                    model: "gpt-3.5-turbo",
+                                    messages: [{
+                                        role: "user",
+                                        content: prompt
+                                    }]
+                                })
+                            });
+                            
+                            const data = await response.json();
+                            if (response.ok) {
+                                responseArea.innerHTML = data.choices[0].message.content;
+                                responseArea.style.color = 'inherit';
+                            } else {
+                                responseArea.innerHTML = `Error: ${data.error.message}`;
+                                responseArea.style.color = 'red';
+                            }
+                        } catch (error) {
+                            responseArea.innerHTML = `Error: ${error.message}`;
+                            responseArea.style.color = 'red';
+                        }
+                    });
+                </script>
             </div>
         </div>
     </section>
