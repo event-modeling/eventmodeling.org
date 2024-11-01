@@ -139,7 +139,7 @@
             if (events.length === 0) return "";
             return events[events.length - 1].apiKey;
         }
-        function toast(message, timestamp, error) {
+        function toast(message, error) {
             const toastContainer = document.getElementById("toast-container");
             const template = document.getElementById("toast-template");
             
@@ -148,7 +148,7 @@
             
             // Fill in the message and timestamp
             toast.querySelector(".toast-message").textContent = message;
-            toast.querySelector(".toast-timestamp").textContent = timestamp;
+            toast.querySelector(".toast-timestamp").textContent = new Date().toLocaleTimeString();
             if (error) {
                 toast.querySelector(".toast-message").style.color = "red";
             }
@@ -201,12 +201,11 @@
                     try {
                         stores = db.objectStoreNames;
                     } catch (error) {
-                        toast("Error listing stores: " + error.message, new Date().toLocaleTimeString(), true);
+                        toast("Error listing stores: " + error.message, true);
                     }
-                    toast("Database stores count: " + stores.length, new Date().toLocaleTimeString());
-                    
-                   for (let store of stores) {
-                        toast("Database store: " + store, new Date().toLocaleTimeString());
+                    toast("Database stores count: " + stores.length);
+                    for (let store of stores) {
+                        toast("Database store: " + store);
                     }
                 },
                 (error) => {
