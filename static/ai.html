@@ -94,6 +94,7 @@
             padding: var(--spacing-unit) * 0.5;
             display: flex;
             align-items: flex-start;
+            justify-content: space-between;
             gap: 1rem;
             max-width: 300px;
             backdrop-filter: blur(10px);
@@ -106,6 +107,7 @@
         .toast > :nth-child(2) {
             white-space: nowrap;
             color: #666;
+            margin-left: auto;
         }
 
     </style>
@@ -130,16 +132,57 @@
                 this.apiKey = apiKey;
             }
         }
+        let eventStore = null;
         const events = [];
+        function getEvents(callback, errorCallback) {
+            try {
+                const events_count = events.length;
+                // update the events from the database
+                const tx = db.transaction("events", "readonly");
+                const store = tx.objectStore("events");
+                let range = IDBKeyRange.lowerBound(events_count);
+                const request = store.getAll(range);
+            toast("getting events from database");
+            request.onsuccess = (event) => {
+                toast("events count: " + events.length);
+                events_count = events.length;
+                db_events_count = event.target.result.length;
+                //add the new events to the events array    
+                if (events_count < db_events_count) {
+                    events.push(...event.target.result.slice(events_count));
+                }
+                callback(events);
+            };
+            request.onerror = (event) => {
+                    errorCallback(event.target.error.message);
+                };
+            } catch (error) {
+                toast("Error getting events: " + error.message, true);
+            }
+        }
         function addEvent(event) {
-            events.push(event);
+            const tx = db.transaction("events", "readwrite");
+            const store = tx.objectStore("events");
+            try {
+                
+                store.add(event);
+                events.push(event);
+            } catch (error) {
+                toast("Error adding event: " + error.message, true);
+            }
         }
         function sv_api_key() {
-            events = events.filter(event => event.type !== "event_api_key_saved");
-            if (events.length === 0) return "";
-            return events[events.length - 1].apiKey;
+            try {
+                filtered_events = events.filter(event => event.type === "event_api_key_saved");
+                if (filtered_events.length === 0) return "";
+                const reducedKey = filtered_events[filtered_events.length - 1].apiKey;
+                toast("reduced api key: " + reducedKey);
+                return reducedKey;
+            } catch (error) {
+                toast("Error getting api key: " + error.message, new Date().toLocaleTimeString(), true);
+            }
         }
-        function toast(message, timestamp, error) {
+        function toast(message, error) {
             const toastContainer = document.getElementById("toast-container");
             const template = document.getElementById("toast-template");
             
@@ -148,7 +191,7 @@
             
             // Fill in the message and timestamp
             toast.querySelector(".toast-message").textContent = message;
-            toast.querySelector(".toast-timestamp").textContent = timestamp;
+            toast.querySelector(".toast-timestamp").textContent = new Date().toLocaleTimeString();
             if (error) {
                 toast.querySelector(".toast-message").style.color = "red";
             }
@@ -163,18 +206,38 @@
             }, 3000);
         }
         let db = null;
-        function indexeddb_init(onsuccess, onfailure) {
-            toast("initializing database", new Date().toLocaleTimeString());
+        function populate_local_events(events) {
+            toast("populating local events with " + events.length + " events");
+            events.forEach(event => {
+                events.push(event);
+                toast("added event: " + event.type);
+            });
+            
+        }
+        function init_event_store() {
+            toast("initializing event store");
+            const eventRequest = db.transaction("events", "readwrite").objectStore("events").getAll()
+            eventRequest.onsuccess = (event) => {
+                toast("event store initialized with " + event.target.result.length + " events");
+                populate_local_events(event.target.result);
+            };
+            eventRequest.onerror = (event) => {
+                toast("Error initializing event store: " + event.target.error.message, true);
+            };
+        }
+        function indexeddb_init() {
+            toast("initializing database");
             try {
                 const openDbRequest = indexedDB.open("MyEventStore", 1);
                 
                 openDbRequest.onerror = (event) => {
-                    onfailure(event.target.error);
+                    toast("Error initializing database: " + event.target.error.message, true);
                 };
 
                 openDbRequest.onsuccess = (event) => {
                     db = event.target.result;      
-                    onsuccess();
+                    toast("database initialized");
+                    init_event_store();
                 };
                 
                 openDbRequest.onupgradeneeded = (event) => {
@@ -182,37 +245,18 @@
                     toast("upgrading database", new Date().toLocaleTimeString());
                     if (!db.objectStoreNames.contains('events')) {
                         const store = db.createObjectStore('events', { keyPath: 'id', autoIncrement: true });
-                        toast("Created new events store", new Date().toLocaleTimeString());
+                        toast("Created new events store");
                     } else {
-                        toast("Using existing events store", new Date().toLocaleTimeString());
+                        toast("Using existing events store");
                     }
                 };
             } catch (error) {
-                toast("Error initializing database: " + error.message, new Date().toLocaleTimeString(), true);
+                toast("Error initializing database: " + error.message, true);
             }
         }
         // event when page is loaded handler
         document.addEventListener("DOMContentLoaded", function() {
-            indexeddb_init(
-                () => {
-                    toast("Database successfully initialized", new Date().toLocaleTimeString());
-                    // list stores in the database
-                    let stores = [];
-                    try {
-                        stores = db.objectStoreNames;
-                    } catch (error) {
-                        toast("Error listing stores: " + error.message, new Date().toLocaleTimeString(), true);
-                    }
-                    toast("Database stores count: " + stores.length, new Date().toLocaleTimeString());
-                    
-                   for (let store of stores) {
-                        toast("Database store: " + store, new Date().toLocaleTimeString());
-                    }
-                },
-                (error) => {
-                    toast("Error initializing database: " + error.message, new Date().toLocaleTimeString(), true);
-                }
-            );
+            indexeddb_init();
             const settingsButton = document.getElementById("settings-toggle-btn");
             const settingsPanel = document.getElementById("settings");
             
@@ -231,15 +275,17 @@
             apiKeyButton.textContent = isHidden ? "Hide API Key" : "Show API Key";
         }
         function saveApiKey() {
-            toast("attempting to save api key", new Date().toLocaleTimeString());
+            toast("attempting to save api key");
             const apiKey = document.getElementById('api-key-input').value.trim();
             const oldApiKey = sv_api_key();
+            toast("old api key: " + oldApiKey);
             if (apiKey === oldApiKey) { 
-                toast("API Key Not Changed", new Date().toLocaleTimeString());
+                toast("API Key Not Changed");
                 return;
             }
-            const event_api_key_saved = new CustomEvent("event_api_key_saved", { detail: apiKey });
-            toast("API Key Saved", new Date().toLocaleTimeString(), !saved);
+            const event_api_key_saved = new event_api_key_saved(apiKey);
+            addEvent(event_api_key_saved);
+            toast("API Key Saved");
         }
         async function testAiApiCall() {
             const apiKey = document.getElementById('api-key-input').value;
@@ -248,7 +294,7 @@
             function showResponse(response, error) {
                 responseArea.innerHTML = response;
                 responseArea.style.color = error ? 'red' : 'inherit';
-                toast("AI Response: " + response, new Date().toLocaleTimeString(), error);  }
+                toast("AI Response: " + response, error);  }
             try {
                 const response = await fetch('https://api.openai.com/v1/chat/completions', {
                     method: 'POST', headers: { 'Content-Type': 'application/json',  'Authorization': `Bearer ${apiKey}` },
