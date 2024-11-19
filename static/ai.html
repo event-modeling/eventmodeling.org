@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Event Modeling AI Tool</title>
-    <script src="https://cdn.jsdelivr.net/npm/uuid@9.0.1/dist/uuidv7.min.js"></script>
     <style>
         /* toast container 
          should grow with more toasts
@@ -114,9 +113,9 @@
     <script defer>
 
         function event_id() {
-            return new uuid_v7();
+            return crypto.randomUUID();
         }
-        class event {
+        class es_event {
             type;
             id;
             timestamp;
@@ -126,7 +125,7 @@
                 this.timestamp = timestamp;
             }
         }
-        class event_api_key_saved extends event {
+        class event_api_key_saved extends es_event {
             apiKey;
             constructor(apiKey) { super("event_api_key_saved", event_id(), new Date());
                 this.apiKey = apiKey;
@@ -157,43 +156,62 @@
                     errorCallback(event.target.error.message);
                 };
             } catch (error) {
-                toast("Error getting events: " + error.message, true);
+                toast("Error getting events", error);
             }
         }
-        function addEvent(event) {
-            const tx = db.transaction("events", "readwrite");
-            const store = tx.objectStore("events");
+        function addEvent(es_event) {
+            toast("adding event: " + es_event.type);
             try {
-                
-                store.add(event);
-                events.push(event);
+                const tx = db.transaction("events", "readwrite");
+                const store = tx.objectStore("events");
+                store.add(es_event);
+                events.push(es_event);
             } catch (error) {
-                toast("Error adding event: " + error.message, true);
+                toast("Error adding event", error);
             }
         }
         function sv_api_key() {
             try {
-                filtered_events = events.filter(event => event.type === "event_api_key_saved");
+                filtered_events = events.filter(es_event => es_event.type === "event_api_key_saved");
                 if (filtered_events.length === 0) return "";
                 const reducedKey = filtered_events[filtered_events.length - 1].apiKey;
                 toast("reduced api key: " + reducedKey);
                 return reducedKey;
             } catch (error) {
-                toast("Error getting api key: " + error.message, new Date().toLocaleTimeString(), true);
+                toast("Error getting api key", error);
             }
         }
-        function toast(message, error) {
+        function toast(message, error = null) {
             const toastContainer = document.getElementById("toast-container");
             const template = document.getElementById("toast-template");
             
             // Clone the template content
             const toast = template.content.cloneNode(true);
             
+            // Get line number from error object if available
+            let lineInfo = '';
+            if (error) {
+                // Try different browser-specific line number properties
+                const lineNumber = error.lineNumber || // Firefox
+                                  (error.stack && error.stack.match(/(\d+):\d+\)?$/)?.[1]) || // Chrome
+                                  (error.stack && error.stack.split('\n')[1]?.match(/:(\d+):\d+/)?.[1]); // Fallback
+                
+                if (lineNumber) {
+                    lineInfo = ` (line: ${lineNumber})`;
+                }
+            }
+            
             // Fill in the message and timestamp
-            toast.querySelector(".toast-message").textContent = message;
+            toast.querySelector(".toast-message").textContent = error ? 
+                `${message}: ${error.message}${lineInfo}` : 
+                message;
+            
             toast.querySelector(".toast-timestamp").textContent = new Date().toLocaleTimeString();
+            
             if (error) {
                 toast.querySelector(".toast-message").style.color = "red";
+                // Log full error to console for debugging
+                console.error(error);
             }
             
             // Add to container
@@ -203,26 +221,26 @@
             const toastElement = toastContainer.lastElementChild;
             setTimeout(() => {
                 toastElement.remove();
-            }, 3000);
+            }, 10000);
         }
         let db = null;
         function populate_local_events(events) {
             toast("populating local events with " + events.length + " events");
-            events.forEach(event => {
-                events.push(event);
-                toast("added event: " + event.type);
+            events.forEach(es_event => {
+                events.push(es_event);
+                toast("added event: " + es_event.type);
             });
             
         }
         function init_event_store() {
             toast("initializing event store");
             const eventRequest = db.transaction("events", "readwrite").objectStore("events").getAll()
-            eventRequest.onsuccess = (event) => {
-                toast("event store initialized with " + event.target.result.length + " events");
-                populate_local_events(event.target.result);
+            eventRequest.onsuccess = (es_events) => {
+                toast("event store initialized with " + es_events.target.result.length + " events");
+                populate_local_events(es_events.target.result);
             };
-            eventRequest.onerror = (event) => {
-                toast("Error initializing event store: " + event.target.error.message, true);
+            eventRequest.onerror = (es_event) => {
+                toast("Error initializing event store: " + es_event.target.error.message, true);
             };
         }
         function indexeddb_init() {
@@ -283,9 +301,14 @@
                 toast("API Key Not Changed");
                 return;
             }
-            const event_api_key_saved = new event_api_key_saved(apiKey);
-            addEvent(event_api_key_saved);
-            toast("API Key Saved");
+            try {   
+                const es_event_api_key_saved = new event_api_key_saved(apiKey);
+                toast("adding event: " + JSON.stringify(es_event_api_key_saved));
+                addEvent(es_event_api_key_saved);
+                toast("API Key Saved");
+            } catch (error) {
+                toast("Error saving API Key: " + error.message, true);
+            }
         }
         async function testAiApiCall() {
             const apiKey = document.getElementById('api-key-input').value;
