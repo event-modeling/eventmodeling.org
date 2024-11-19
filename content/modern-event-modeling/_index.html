@@ -1,0 +1,44 @@
+---
+title: "Modern Event Modeling"
+date: 2024-11-16T19:48:07-07:00
+type: page
+draft: false
+---
+
+This chapter is devoted to capture the core concepts of Modern Event Modeling and the latest updates to the conventions used. If you have been doing Event Modeling for a while, you will find this chapter useful to add some improvements to your modeling practices. While this book uses Event Modeling as the notation to explain Event Sourcing, here we will be exclusively be focusing on Event Modeling and not discussing how one may want to implement the solution it describes.
+
+# Starting with the core elements
+
+An Event Model is contains 4 main elements:
+
+1. **Events**: These are the core elements of the model. They represent the changes that occur in the system.
+2. **User Interfaces** or **Processors**: This is core to ensure UX/UI is captured in the model or aucomation.
+3. **State Views**: These capture and transform data at a particular point to express information for a particular purpose.
+4. **Commands**: These capture the intent of the user or processor to change the state of the system.
+
+These are the building blocks of the 2 core patterns, refered to as "slices"
+
+1. **State Change**: A combination of a User Interface that sends a Command and results in an Event. The User Interface is replaced by a processor if it is some automation instead of a user that's causing the aciton.
+2. **State View**: A combination of one or more Events that populate a State View which is used by a User Interface. If it's automation that's occuring at this point in the workflow, then the State View is used by a processor; these are labeled as TODO lists.
+
+## Alternate flows and data permutations
+
+Data permutations are listed under each of these "slices" and show variations without complicating the main flow above:
+
+1. Given-When-Then is used to show the different ways the intent to change the state of the system can playout. "Given" a state of the system expressed by a series of Events, "When" someone or something tries to execute a Command, "Then" we observe either success or failure. Success is marked only with just another Event being stored by the system. A failure is specified with a message and nothing is stored in the system, indicating that the state was not successfully changed. For non-trivial steps this may be 10 to 20 of these scenarios. More on the notation later.
+
+2. Given-Then is used to show the different ways the history of events affects a particular view of information in the system in a specific State View. There is no "Then" in this step because no action needs to be taken. The State View simply reflects what the events mean for a particular context. Like the GWT (Given-When-Then), these scenarios fit underneath the respective slice.
+
+## Swimlanes
+
+State can be organized according to physical or logical using swimlanes. These allow anyone to undenstand at a glance which services - even extrenal or internal - are involved in any of the workflows that the system supports.
+
+## Information completeness
+
+What if the state view or state change is used in different parts of the workflow as well?
+
+## Estimates
+
+## A work on non-Event Sourced systems
+
+I know that this book is about Event Sourcing, but you will most likely still run into 
