@@ -25,10 +25,19 @@
             --text-color-dark: #f8f9fa;
             --border-color-dark: #495057;
 
+            /* disabled color */
+            --disabled-color-border: #6c757d;
+
             /* Shared styles */
             --font-family: 'Inter', sans-serif;
             --border-radius: 4px;
             --spacing-unit: 1rem;
+
+            /* slice styles */
+            --slice-border-radius: 4px;
+
+            /* suggested slice styles */
+            --slice-border-color: --disabled-color;
         }
 
         /* Default to light theme */
@@ -135,28 +144,28 @@
         const events = [];
         function getEvents(callback, errorCallback) {
             try {
-                const events_count = events.length;
-                // update the events from the database
                 const tx = db.transaction("events", "readonly");
                 const store = tx.objectStore("events");
-                let range = IDBKeyRange.lowerBound(events_count);
-                const request = store.getAll(range);
-            toast("getting events from database");
-            request.onsuccess = (event) => {
-                toast("events count: " + events.length);
-                events_count = events.length;
-                db_events_count = event.target.result.length;
-                //add the new events to the events array    
-                if (events_count < db_events_count) {
-                    events.push(...event.target.result.slice(events_count));
-                }
-                callback(events);
-            };
-            request.onerror = (event) => {
-                    errorCallback(event.target.error.message);
+                
+                // Use cursor to get events in insertion order
+                const events = [];
+                const request = store.openCursor();
+                
+                request.onsuccess = (event) => {
+                    const cursor = event.target.result;
+                    if (cursor) {
+                        events.push(cursor.value);
+                        cursor.continue();
+                    } else {
+                        callback(events);
+                    }
+                };
+                
+                request.onerror = (event) => {
+                    errorCallback(event.target.error);
                 };
             } catch (error) {
-                toast("Error getting events", error);
+                errorCallback(error);
             }
         }
         function addEvent(es_event) {
@@ -164,14 +173,27 @@
             try {
                 const tx = db.transaction("events", "readwrite");
                 const store = tx.objectStore("events");
-                store.add(es_event);
-                events.push(es_event);
+                
+                const event = {
+                    ...es_event,
+                    timestamp: new Date().toISOString()
+                };
+                
+                const request = store.add(event);
+                
+                request.onsuccess = () => {
+                    events.push(event);
+                    toast("Event added successfully");
+                };
             } catch (error) {
                 toast("Error adding event", error);
             }
         }
-        function sv_api_key() {
+        function sv_api_key(events) {
+            toast("getting api key");
             try {
+
+                toast("filtering events. total events: " + events.length);
                 filtered_events = events.filter(es_event => es_event.type === "event_api_key_saved");
                 if (filtered_events.length === 0) return "";
                 const reducedKey = filtered_events[filtered_events.length - 1].apiKey;
@@ -179,6 +201,7 @@
                 return reducedKey;
             } catch (error) {
                 toast("Error getting api key", error);
+                return "";
             }
         }
         function toast(message, error = null) {
@@ -221,36 +244,65 @@
             const toastElement = toastContainer.lastElementChild;
             setTimeout(() => {
                 toastElement.remove();
-            }, 10000);
+            }, 30000);
         }
         let db = null;
-        function populate_local_events(events) {
-            toast("populating local events with " + events.length + " events");
-            events.forEach(es_event => {
+        function populate_local_events(retrieved_events) {
+            toast("populating local events with " + retrieved_events.length + " events");
+            retrieved_events.forEach(es_event => {
                 events.push(es_event);
-                toast("added event: " + es_event.type);
+                toast("retrieved event: " + JSON.stringify(es_event));
             });
-            
+            veiw_init()
+        }
+        function clearEventStore() {
+            // delete all events from the database
+            db.transaction("events", "readwrite").objectStore("events").clear();
+            // clear the local events array
+            events.length = 0;
+            toast("event store cleared");
         }
         function init_event_store() {
             toast("initializing event store");
-            const eventRequest = db.transaction("events", "readwrite").objectStore("events").getAll()
-            eventRequest.onsuccess = (es_events) => {
-                toast("event store initialized with " + es_events.target.result.length + " events");
-                populate_local_events(es_events.target.result);
-            };
-            eventRequest.onerror = (es_event) => {
-                toast("Error initializing event store: " + es_event.target.error.message, true);
-            };
+            try {
+                const eventRequest = db.transaction("events", "readwrite").objectStore("events").getAll()
+                eventRequest.onsuccess = (es_events) => {
+                    toast("event store initialized with " + es_events.target.result.length + " events");
+                    // show each event and the index
+                    es_events.target.result.forEach((es_event, index) => {
+                        toast("event " + index + " : " + JSON.stringify(es_event));
+                    });
+                    populate_local_events(es_events.target.result);
+                };
+                eventRequest.onerror = (es_event) => {
+                    toast("Error initializing event store: " + es_event.target.error.message);
+                };
+            } catch (error) {
+                toast("Error initializing event store", error);
+            }
+            try {   
+                
+                const tx = db.transaction("events", "readonly");
+                const store = tx.objectStore("events");
+                const indexes = store.indexNames;
+                // show all indexes
+                toast("indexes: " + JSON.stringify(Array.from(indexes)));
+                // show all keys
+                const keys = store.getAllKeys();
+                toast("keys: " + JSON.stringify(keys));
+                // show all values
+                const values = store.getAll();
+                toast("values: " + JSON.stringify(values));
+            } catch (error) {
+                toast("Error getting indexes", error);
+            }
         }
         function indexeddb_init() {
             toast("initializing database");
             try {
-                const openDbRequest = indexedDB.open("MyEventStore", 1);
+                const openDbRequest = indexedDB.open("OrderedEventStore2", 4);
                 
-                openDbRequest.onerror = (event) => {
-                    toast("Error initializing database: " + event.target.error.message, true);
-                };
+                openDbRequest.onerror = (event) => { toast("Error intializing datbase", event.target.error); };
 
                 openDbRequest.onsuccess = (event) => {
                     db = event.target.result;      
@@ -260,21 +312,36 @@
                 
                 openDbRequest.onupgradeneeded = (event) => {
                     db = event.target.result;
-                    toast("upgrading database", new Date().toLocaleTimeString());
+                    toast("upgrading database at " + new Date().toLocaleTimeString());
                     if (!db.objectStoreNames.contains('events')) {
-                        const store = db.createObjectStore('events', { keyPath: 'id', autoIncrement: true });
+                        // Use autoIncrement to maintain insertion order
+                        const store = db.createObjectStore('events', { 
+                            autoIncrement: true 
+                        });
+                        store.createIndex("timestamp", "timestamp");
                         toast("Created new events store");
-                    } else {
-                        toast("Using existing events store");
-                    }
+                    } else { toast("Using existing events store"); }
                 };
             } catch (error) {
-                toast("Error initializing database: " + error.message, true);
+                toast("Error initializing database", error);
             }
         }
         // event when page is loaded handler
+        function veiw_init() {
+            toast("initializing views");
+            // get the api key from the events
+            try {
+                const apiKey = sv_api_key(events);
+                if (apiKey) {
+                    document.getElementById('api-key-input').value = apiKey;
+                }
+            } catch (error) {
+                toast("Error initializing views", error);
+            }
+        }
         document.addEventListener("DOMContentLoaded", function() {
             indexeddb_init();
+            veiw_init();
             const settingsButton = document.getElementById("settings-toggle-btn");
             const settingsPanel = document.getElementById("settings");
             
@@ -295,7 +362,7 @@
         function saveApiKey() {
             toast("attempting to save api key");
             const apiKey = document.getElementById('api-key-input').value.trim();
-            const oldApiKey = sv_api_key();
+            const oldApiKey = sv_api_key(events);
             toast("old api key: " + oldApiKey);
             if (apiKey === oldApiKey) { 
                 toast("API Key Not Changed");
@@ -329,6 +396,41 @@
                 } else { showResponse(`Error: ${data.error.message}`, true); }
             } catch (error) { showResponse(`Error: ${error.message}`, true); }
         }
+        function getEventCount() {
+            try {
+                const tx = db.transaction("events", "readonly");
+                const store = tx.objectStore("events");
+                const request = store.count();
+                
+                request.onsuccess = () => {
+                    toast("Event count: " + request.result);
+                };
+                
+                request.onerror = (event) => {
+                    toast("Error getting event count: " + event.target.error);
+                };
+            } catch (error) {
+                toast("Error getting event count", error);
+            }
+        }
+        function getLast3Events() {
+            // fetch only the last 3 events for the db  
+            try {
+                const tx = db.transaction("events", "readonly");
+                const store = tx.objectStore("events");
+                const request = store.getAll();
+                request.onsuccess = (event) => {
+                    const events = event.target.result;
+                    toast("Last 3 events: " + JSON.stringify(events.slice(-3)));
+                };  
+            } catch (error) {
+                toast("Error getting last 3 events", error);
+            }
+        }
+        function addSlice() {
+            const eventModelContainer = document.getElementById("event-model-container");
+            eventModelContainer.appendChild(document.getElementById("slice-template").content.cloneNode(true));
+        }
     </script>
 </head>
 <body>
@@ -341,6 +443,11 @@
         </div>
         <div id="settings" class="panel">
             <h2>Settings</h2>
+            <div class="event-store-container">
+                <button id="clear-event-store-btn" onclick="clearEventStore()">Clear Event Store</button>
+                <button id="get-event-count" onclick="getEventCount()">Get Event Count</button>
+                <button id="get-last-3-events" onclick="getLast3Events()">Get Last 3 Events</button>
+            </div>
             <!-- api key to open ai. it should be in a hidden text input but have a show toggle button  -->
             <div class="api-key-container">
                 <label for="api-key-input">AI API Key:</label>
@@ -353,6 +460,13 @@
                     <div id="test-ai-response" class="response-area"></div>
                 </div>
             </div>
+    
+        </div>
+        <div id="event-model" class="panel">
+            <h2>Event Model</h2><button id="add-slice-btn" onclick="addSlice()">Add Slice</button>
+            <div id="event-model-container">
+                <!-- event model goes here -->
+            </div>
         </div>
         <!-- toast template - hidden template for JS use -->
         <template id="toast-template">
@@ -360,6 +474,26 @@
                 <div class="toast-message"></div>
                 <div class="toast-timestamp"></div>
             </div>
+        </template>
+        <!-- slice template - hidden template for adding slices -->
+        <template id="slice-template">
+         <div class="slice">
+            <div class="ui">
+                <!-- mockup components go here -->
+            </div>
+            <div class="system-boudary">
+                <!-- this can by a command or a state view-->
+                 <div class="component-title">Name</div>
+                 <div class="properties">
+                    <!-- properties can have a value that is a collection of other properties-->
+                    <div class="property"><div class="property-name">Name</div><div class="property-value">Value</div></div>
+                 </div>
+                 <div class="event">
+                    <!-- properties can have a value that is a collection of other properties-->
+                    <div class="property"><div class="property-name">Name</div><div class="property-value">Value</div></div>
+                 </div>
+            </div>
+         </div>
         </template>
     </section>
 </body>
