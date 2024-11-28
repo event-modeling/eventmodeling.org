@@ -38,6 +38,11 @@
 
             /* suggested slice styles */
             --slice-border-color: --disabled-color;
+
+            /* Slice component colors */
+            --state-view-color: #60c566;
+            --command-color: #6094c5;
+            --event-color: #ffe600;
         }
 
         /* Default to light theme */
@@ -116,6 +121,107 @@
             white-space: nowrap;
             color: #666;
             margin-left: auto;
+        }
+
+        /* Add these styles for the event model container */
+        #event-model-container {
+            display: flex;
+            flex-direction: row;
+            gap: var(--spacing-unit);
+            overflow-x: auto; /* Allows horizontal scrolling if needed */
+            padding: var(--spacing-unit);
+        }
+
+        /* Add styles for individual slices */
+        .slice {
+            min-width: 300px; /* Gives slices a reasonable minimum width */
+            flex: 0 0 auto; /* Prevents slices from stretching/shrinking */
+            border: 1px solid var(--border-color-light);
+            border-radius: var(--slice-border-radius);
+            padding: var(--spacing-unit);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .slice {
+                border-color: var(--border-color-dark);
+            }
+        }
+
+        /* Add these styles for the slice sections */
+        .slice > div {
+            border: 1px solid var(--border-color-light);
+            border-radius: var(--slice-border-radius);
+            padding: var(--spacing-unit);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        /* Style the titles within each section */
+        .slice .title {
+            font-weight: bold;
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+            padding-bottom: calc(var(--spacing-unit) * 0.25);
+            border-bottom: 1px solid var(--border-color-light);
+        }
+
+        /* Dark theme support */
+        @media (prefers-color-scheme: dark) {
+            .slice > div {
+                border-color: var(--border-color-dark);
+            }
+            .slice .title {
+                border-color: var(--border-color-dark);
+            }
+        }
+
+        /* Add these styles for properties */
+        .property {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: calc(var(--spacing-unit) * 0.25);
+        }
+
+        .property-name {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .property-name::after {
+            content: ':';
+        }
+
+        .property-value {
+            flex: 1;
+        }
+
+        /* Dark theme support for properties */
+        @media (prefers-color-scheme: dark) {
+            .property {
+                color: var(--text-color-dark);
+            }
+        }
+        
+        .state-view .system-boundary {
+            background-color: var(--state-view-color);
+            color: black;
+        }
+        .command .system-boundary {
+            background-color: var(--command-color);
+            color: black;
+        }
+
+        /* Add event styling */
+        .slice .event {
+            background-color: var(--event-color);
+            color: black;
+        }
+
+        /* Ensure all text within these sections stays black */
+        .system-boundary .title,
+        .system-boundary .property,
+        .event .title,
+        .event .property {
+            color: black;
         }
 
     </style>
@@ -427,9 +533,20 @@
                 toast("Error getting last 3 events", error);
             }
         }
-        function addSlice() {
-            const eventModelContainer = document.getElementById("event-model-container");
-            eventModelContainer.appendChild(document.getElementById("slice-template").content.cloneNode(true));
+        function addSlice(sliceType) {
+            try {  
+                toast("adding slice: " + sliceType);
+                const eventModelContainer = document.getElementById("event-model-container");
+                const sliceTemplate = document.getElementById("slice-template");
+                if (!sliceTemplate) {
+                    throw new Error("Slice template not found");
+                }
+                const newSlice = sliceTemplate.content.cloneNode(true).firstElementChild;
+                newSlice.classList.add(sliceType === "state view" ? "state-view" : "command");
+                eventModelContainer.appendChild(newSlice);
+            } catch (error) {
+                toast("Error adding slice", error);
+            }
         }
     </script>
 </head>
@@ -463,7 +580,9 @@
     
         </div>
         <div id="event-model" class="panel">
-            <h2>Event Model</h2><button id="add-slice-btn" onclick="addSlice()">Add Slice</button>
+            <h2>Event Model</h2>
+            <button id="add-state-change-slice-btn" onclick="addSlice('state change')">Add State Change Slice</button>
+            <button id="add-state-view-slice-btn" onclick="addSlice('state view')">Add State View Slice</button>
             <div id="event-model-container">
                 <!-- event model goes here -->
             </div>
@@ -481,19 +600,27 @@
             <div class="ui">
                 <!-- mockup components go here -->
             </div>
-            <div class="system-boudary">
-                <!-- this can by a command or a state view-->
-                 <div class="component-title">Name</div>
-                 <div class="properties">
+            <div class="system-boundary">
+                <!-- this can be a command or a state view-->
+                <div class="title">Name</div>
+                <div class="properties">
                     <!-- properties can have a value that is a collection of other properties-->
-                    <div class="property"><div class="property-name">Name</div><div class="property-value">Value</div></div>
-                 </div>
-                 <div class="event">
-                    <!-- properties can have a value that is a collection of other properties-->
-                    <div class="property"><div class="property-name">Name</div><div class="property-value">Value</div></div>
-                 </div>
+                    <div class="property">
+                        <div class="property-name">Name</div>
+                        <div class="property-value">Value</div>
+                    </div>
+                </div>
             </div>
-         </div>
+            <div class="event">
+                <div class="title">Name</div>
+                   <!-- properties can have a value that is a collection of other properties-->
+                   <div class="property">
+                        <div class="property-name">Name</div>
+                        <div class="property-value">Value</div>
+                    </div>
+                
+                
+            </div>
         </template>
     </section>
 </body>
