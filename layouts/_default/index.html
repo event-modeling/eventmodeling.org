@@ -1,6 +1,40 @@
 {{ define "main" }}
 <main class="max-w-screen-md mx-auto px-4">
   <article>
+    <div style="margin-bottom: 1rem; background-color: #cdffc2; padding: 1rem;">
+      <p>Sign up for the next online workshop coming up on November 30th!</p>
+      <a href="https://adaptechgroup.com/#Workshops" class="inline-block">
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style="margin: 1rem 0 1rem 0;">
+          Sign up for the next Workshop
+        </button>
+      </a>
+    </div>
+    <div style="margin-bottom: 1rem; background-color: #cdffc2; padding: 1rem; display: flex; flex-direction: row; align-items: center; gap: 1rem;">
+      <div><img src="resources/EM-ES-book.png" alt="Event Modeling and Event Sourcing book" /></div>
+      <div>
+        <p>The Event Modeling and Event Sourcing book is now available! Thanks to Martin, you can get the book on lean pub right now!</p>
+        <a href="https://leanpub.com/eventmodeling-and-eventsourcing" class="inline-block">
+          <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style="margin-top: 1rem;">
+            Buy the Book
+          </button>
+        </a>
+      </div>
+    </div>
+    <div style="margin-bottom: 1rem; background-color: #cdffc2; padding: 1rem;">
+      <p>Sign up for the weekly newsletter and listen to the podcastto get the latest news and updates about Event Modeling authored by Adam Dymitruk and Martin Dilger. It's the easiest way to stay up to date with the latest developments in Event Modeling if you missed the streams or all the discussion on Discord.</p>
+      <a href="https://newsletter.nebulit.de" class="inline-block">
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style="margin: 1rem 0 1rem 0;">
+          Sign up to the Newsletter
+        </button>
+      </a>
+        <a href="https://podcast.eventmodeling.org/" class="inline-block">
+          <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style="margin: 1rem 0 1rem 0;">Listen to the Podcast</button>
+        </a>
+        <a href="https://www.youtube.com/@eventmodeling/streams" class="inline-block">
+          <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style="margin: 1rem 0 1rem 0;">Watch the Live Streams</button>
+        </a>
+        <p>Don't miss out on other ways to learn and connect on the <b><a href="/resources">resources page</a></b>.</p>
+    </div>
     {{ .Content }}
   </article>
 </main>

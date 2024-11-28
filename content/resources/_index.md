@@ -5,12 +5,25 @@ type: page
 draft: false
 ---
 # Table of Contents:
-1. [Live Streams](#live-streams)
-2. [Community](#discord)
-3. [Videos](#intro-videos)
-4. [Tools](#tools)
+1. [Workshops](#workshops)
+2. [Live Streams](#live-streams)
+3. [Community](#discord)
+4. [Book](#book)
+5. [Newsletter](#newsletter)
+6. [Laptop Stickers](#laptop-stickers)
+7. [Videos](#intro-videos)
+8. [Tools](#tools)
 
 # Community
+
+## [Workshops](#workshops) {#workshops}
+
+Online workshop Saturday, 8 am PST, Nov 30th, 2024.
+Book your spot [here](https://adaptechgroup.com/#workshops)
+
+## [Podcast](#podcast) {#podcast}
+
+Catch up with the latest episodes of the [Event Modeling Podcast](https://podcast.eventmodeling.org/)
 
 ## [Live Streams](#live-streams) {#live-streams}
 
@@ -18,13 +31,19 @@ draft: false
 
 ## [Discord](#discord) {#discord}
 
-We have moved our community from Slack to Discord. The Slack channel was created to set an environment where discussions could happen and allow a new avenue for the practice to get adopted. That purpose is better served by Discord which allows community members to interact and coordinate better. You can join the community through this link:
-
 [![discord](discord.png)](https://discord.gg/Sw4MvagftJ)
 
-## [Workshops](#workshops) {#workshops}
+We have moved our community from Slack to Discord. The Slack channel was created to set an environment where discussions could happen and allow a new avenue for the practice to get adopted. That purpose is better served by Discord which allows community members to interact and coordinate better. You can join the community through this link:
 
-Coming soon: 2024 September Event Modeling Unconference Vancouver, Canada
+## [Book](#book)
+
+Martin Dilger's book on Event Modeling and Event Sourcing is available for purchase [here](https://leanpub.com/event-modeling-and-event-sourcing). It explains both concepts but it's complete enough on Event Modeling to be used as a way to learn the practice.
+
+![book](EM-ES-book.png)
+
+## [Newsletter](#newsletter)
+
+The [weekly newsletter](https://newsletter.nebulit.de) is a great way to stay up to date with the latest news in the Event Modeling community. It will summarize many topics from the community and the podcast. This should be a great way to keep up if you don't have time to listen to the podcast or keep up with the discord discussions.
 
 ## [Laptop Stickers](#laptop-stickers) {#laptop-stickers}
 
@@ -37,6 +56,10 @@ You can send these to your own printer to save on shipping and other costs.
 [download](stickers2.svg)
 
 # [Intro Videos](#intro-videos) {#intro-videos}
+
+Beginner to expert level presentation on Event Modeling as part of the YOW conference 3 city tour in Australia in December 2023.
+
+{{< youtube Pin_B-AbdXE >}}
 
 Full mini-workshop for InfoZone.se on Event Modeling.
 
@@ -58,13 +81,15 @@ This is the first public recording of a talk on Event Modeling. It was recorded 
 
 {{< youtube htxlr8QxeGc >}}
 
-This is a discussion with Roy Osherove about Event Modeling and Event Sourcing. It gets into details of implementing systems using event storming that are described with event modeling.
-
-{{< youtube tkn1p7LUY2o >}}
-
 # [Tools](#tools) {#tools}
 
 ## Online Modeling Tools:
+
+### [Miro Plugin from Nebulit.de](https://nebulit.de)
+
+**Event Modeling Plugin for Miro** allows you to create event models and navigate them with ease as well as generate code from the model. Other features include checking references to ensure "information completeness" and moving the elements quickly to efficiently add to the moedel.
+
+![nebulit](nebulit.png)S
 
 ### [ONote](https://onote.com)
 
