@@ -40,9 +40,12 @@
             --slice-border-color: --disabled-color;
 
             /* Slice component colors */
+            --slice-background-color: #f8f9fa;
+            --slice-ui-background-color: #e9ecef;
             --state-view-color: #60c566;
             --command-color: #6094c5;
             --event-color: #ffe600;
+
         }
 
         /* Default to light theme */
@@ -596,30 +599,31 @@
         </template>
         <!-- slice template - hidden template for adding slices -->
         <template id="slice-template">
-         <div class="slice">
-            <div class="ui">
-                <!-- mockup components go here -->
-            </div>
-            <div class="system-boundary">
-                <!-- this can be a command or a state view-->
-                <div class="title">Name</div>
-                <div class="properties">
-                    <!-- properties can have a value that is a collection of other properties-->
-                    <div class="property">
-                        <div class="property-name">Name</div>
-                        <div class="property-value">Value</div>
+            <div class="slice">
+                <div class="ui">
+                    <!-- mockup components go here -->
+                </div>
+                <div class="system-boundary">
+                    <!-- this can be a command or a state view-->
+                    <div class="title">Name</div>
+                    <div class="properties">
+                        <!-- properties can have a value that is a collection of other properties-->
+                        <div class="property">
+                            <div class="property-name">Name</div>
+                            <div class="property-value">Value</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="event">
-                <div class="title">Name</div>
-                   <!-- properties can have a value that is a collection of other properties-->
-                   <div class="property">
-                        <div class="property-name">Name</div>
-                        <div class="property-value">Value</div>
+                <div class="event">
+                    <div class="title">Name</div>
+                    <!-- properties can have a value that is a collection of other properties-->
+                    <div class="properties">
+                        <div class="property">
+                            <div class="property-name">Name</div>
+                            <div class="property-value">Value</div>
+                        </div>
                     </div>
-                
-                
+                </div>
             </div>
         </template>
     </section>
