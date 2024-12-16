@@ -35,7 +35,7 @@ Catch up with the latest episodes of the [Event Modeling Podcast](https://podcas
 
 We have moved our community from Slack to Discord. The Slack channel was created to set an environment where discussions could happen and allow a new avenue for the practice to get adopted. That purpose is better served by Discord which allows community members to interact and coordinate better. You can join the community through this link:
 
-## [Book](#book)
+## [Book](#book) {#book}
 
 Martin Dilger's book on Event Modeling and Event Sourcing is available for purchase [here](https://leanpub.com/event-modeling-and-event-sourcing). It explains both concepts but it's complete enough on Event Modeling to be used as a way to learn the practice.
 
