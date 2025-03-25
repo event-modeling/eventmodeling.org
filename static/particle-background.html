@@ -277,6 +277,14 @@
                 currentAnnouncementIndex = (currentAnnouncementIndex + 1) % announcements.length;
             }, 500); // Match this to the animation duration (0.5s = 500ms)
         }
+
+        // Add click event listener to move to next announcement
+        document.addEventListener('click', (event) => {
+            // Ignore clicks on the settings panel
+            if (!event.target.closest('.settings')) {
+                showNextAnnouncement();
+            }
+        });
     </script>
 <script>
     const canvas = document.createElement('canvas');
