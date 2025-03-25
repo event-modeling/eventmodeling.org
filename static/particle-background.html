@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Particle Animation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: transparent;
+        }
+        .content--canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .centered-text {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: left;
+            z-index: 2;
+            max-width: 80%;
+            
+            /* Add animation properties */
+            animation-duration: 0.5s;
+            animation-fill-mode: both;
+        }
+        .settings {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 10;
+            display: none;
+        }
+        .settings textarea {
+            width: 300px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #0a0;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            margin-bottom: 10px;
+        }
+        .settings button {
+            background-color: #0a0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .settings button:hover {
+            background-color: #0c0;
+        }
+        /* Add these keyframes for the drop animations */
+        @keyframes dropIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes dropOut {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+        
+        /* Add animation class modifiers */
+        .drop-in {
+            animation-name: dropIn;
+        }
+        
+        .drop-out {
+            animation-name: dropOut;
+        }
+    </style>
+</head>
+<body>
+    <div class="content--canvas"></div>
+    <div class="centered-text">This text should appear on top of the green circle</div>
+    <div class="settings">
+        <textarea id="announcements"></textarea>
+        <button id="save">Save Announcements</button>
+    </div>
+    <script>
+        const show_alert = false;
+        // announcments
+        let announcements = [
+            "👋 Welcome to the Event Modeling and Event Sourcing live stream!",
+            "👉 Join us on Discord: eventmodeling.org/resources/", "🤓📖 Get the Understanding Event Sourcing book: leanpub.com/eventmodeling-and-eventsourcing","🖥️ code for this session: git@github.com:event-modeling/open-spaces-comocamp.git (branches starting with bpf) 🖥️"
+        ];
+
+        // Track current announcement index
+        let currentAnnouncementIndex = 0;
+
+        function getAnnouncements() {
+            const request = indexedDB.open('announcements', 1);
+            
+            request.onupgradeneeded = function(event) {
+                const db = event.target.result;
+                if (!db.objectStoreNames.contains('messages')) {
+                    db.createObjectStore('messages', { keyPath: 'id' });
+                }
+            };
+            
+            request.onsuccess = function(event) {
+                const db = event.target.result;
+                // Check if the 'messages' object store exists before attempting transaction
+                if (!db.objectStoreNames.contains('messages')) {
+                    console.log("Object store 'messages' not found, using default announcements");
+                    if (show_alert) alert("Error: Messages store not found. Using default announcements.");
+                    return;
+                }
+                
+                const transaction = db.transaction(['messages'], 'readonly');
+                const store = transaction.objectStore('messages');
+                const getRequest = store.get(1);
+                
+                getRequest.onsuccess = function(event) {
+                    if (event.target.result) {
+                        announcements = event.target.result.data;
+                        showNextAnnouncement();
+                    }
+                };
+                
+                transaction.onerror = function(event) {
+                    const errorMsg = "Transaction error: " + event.target.error;
+                    console.error(errorMsg);
+                    if (show_alert) alert(errorMsg);
+                };
+            };
+            
+            request.onerror = function(event) {
+                const errorMsg = "Database error: " + event.target.errorCode;
+                console.error(errorMsg);
+                if (show_alert) alert(errorMsg);
+            };
+        }
+        
+        function setAnnouncements(newAnnouncements) {
+            const request = indexedDB.open('announcements', 1);
+            
+            request.onupgradeneeded = function(event) {
+                const db = event.target.result;
+                if (!db.objectStoreNames.contains('messages')) {
+                    db.createObjectStore('messages', { keyPath: 'id' });
+                }
+            };
+            
+            request.onsuccess = function(event) {
+                const db = event.target.result;
+                try {
+                    const transaction = db.transaction(['messages'], 'readwrite');
+                    const store = transaction.objectStore('messages');
+                    
+                    const data = { id: 1, data: newAnnouncements };
+                    const putRequest = store.put(data);
+                    
+                    putRequest.onsuccess = function() {
+                        console.log("Announcements saved successfully");
+                        if (show_alert) alert("Announcements saved successfully!");
+                        announcements = newAnnouncements;
+                        
+                        // Reset the index and show the first announcement after saving
+                        currentAnnouncementIndex = 0;
+                        document.querySelector('.centered-text').textContent = announcements[0];
+                        
+                        // Add the drop-in animation for the new announcement
+                        const textElement = document.querySelector('.centered-text');
+                        textElement.classList.remove('drop-out');
+                        textElement.classList.add('drop-in');
+                    };
+                    
+                    putRequest.onerror = function(event) {
+                        const errorMsg = "Error saving announcements: " + event.target.error;
+                        console.error(errorMsg);
+                        if (show_alert) alert(errorMsg);
+                    };
+                    
+                    transaction.onerror = function(event) {
+                        const errorMsg = "Transaction error during save: " + event.target.error;
+                        console.error(errorMsg);
+                        if (show_alert) alert(errorMsg);
+                    };
+                } catch (e) {
+                    const errorMsg = "Error setting announcements: " + e.message;
+                    console.error(errorMsg);
+                    if (show_alert) alert(errorMsg);
+                }
+            };
+            
+            request.onerror = function(event) {
+                const errorMsg = "Database error during save: " + event.target.errorCode;
+                console.error(errorMsg);
+                if (show_alert) alert(errorMsg);
+            };
+        }
+        // on load, set the announcements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize with the first announcement (index 0)
+            currentAnnouncementIndex = 0;
+            if (announcements.length > 0) {
+                document.querySelector('.centered-text').textContent = announcements[0];
+            }
+            // get the announcements from indexeddb
+            getAnnouncements();
+        });
+        // every 5 seconds, change the announcement
+        setInterval(() => {
+            showNextAnnouncement();
+        }, 15000);
+        // on double click of the page, show the settings where you can edit the announcements
+        document.addEventListener('dblclick', () => {
+            const settingsDiv = document.querySelector('.settings');
+            settingsDiv.style.display = 'block';
+            
+            const textarea = document.getElementById('announcements');
+            textarea.value = announcements.join('\n');
+        });
+        // listen for the save button, store the announcements in indexeddb, change the announcements to the new ones, use a new line to separate each announcement in the textarea, hide the settings after a successful save
+        document.getElementById('save').addEventListener('click', () => {
+            const announcementsText = document.getElementById('announcements').value;
+            const newAnnouncements = announcementsText.split('\n').filter(text => text.trim() !== '');
+            
+            setAnnouncements(newAnnouncements);
+            document.querySelector('.settings').style.display = 'none';
+        });
+
+        // Function to show the next announcement in the rotation
+        function showNextAnnouncement() {
+            if (announcements.length === 0) return;
+            
+            const textElement = document.querySelector('.centered-text');
+            
+            // Add drop-out animation
+            textElement.classList.remove('drop-in');
+            textElement.classList.add('drop-out');
+            
+            // Wait for animation to complete before changing text
+            setTimeout(() => {
+                // Update the announcement text
+                textElement.textContent = announcements[currentAnnouncementIndex];
+                
+                // Add drop-in animation
+                textElement.classList.remove('drop-out');
+                textElement.classList.add('drop-in');
+                
+                // Move to the next announcement
+                currentAnnouncementIndex = (currentAnnouncementIndex + 1) % announcements.length;
+            }, 500); // Match this to the animation duration (0.5s = 500ms)
+        }
+    </script>
+<script>
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const container = document.querySelector('.content--canvas');
+    let animationId;
+    let time = 0;
+    let lastTimestamp = 0;
+    
+    // Number of splines to draw
+    const SPLINE_COUNT = 10;
+    
+    // Create random oscillation patterns for each point
+    function generateRandomOscillators(count) {
+        const oscillators = [];
+        for (let i = 0; i < count; i++) {
+            oscillators.push({
+                frequency: 0.01 + Math.random() * 0.02, // Slower frequency for smoother animation
+                amplitude: 40 + Math.random() * 30,     // Random amplitude between 40 and 70
+                phase: Math.random() * Math.PI * 2,     // Random phase offset
+                secondaryFreq: 0.005 + Math.random() * 0.01 // Slower secondary frequency
+            });
+        }
+        return oscillators;
+    }
+    
+    // Generate unique oscillation patterns for each spline
+    const splineOscillators = [];
+    for (let s = 0; s < SPLINE_COUNT; s++) {
+        splineOscillators.push(generateRandomOscillators(6)); // 5 points + 1 extra
+    }
+    
+    // Generate random colors for each spline
+    function generateRandomGreenColors(count) {
+        const colors = [];
+        for (let i = 0; i < count; i++) {
+            // Create variations of green with different brightness/opacity
+            const greenIntensity = 25 + Math.floor(Math.random() * 105); // 100-205
+            const opacity = 0.5 + Math.random() * 0.5; // 0.5-1.0
+            colors.push(`rgba(0, ${greenIntensity}, 50, ${opacity})`);
+        }
+        return colors;
+    }
+    
+    // Generate random blur parameters for each spline
+    function generateBlurParameters(count) {
+        const blurParams = [];
+        for (let i = 0; i < count; i++) {
+            blurParams.push({
+                minBlur: 3 + Math.floor(Math.random() * 5),  // Between 3-7
+                maxBlur: 12 + Math.floor(Math.random() * 10), // Between 12-21
+                blurSpeed: 0.01 + Math.random() * 0.02,      // Slower blur speed for smoother transitions
+                blurPhase: Math.random() * Math.PI * 2       // Random starting phase
+            });
+        }
+        return blurParams;
+    }
+    
+    const splineColors = generateRandomGreenColors(SPLINE_COUNT);
+    const splineBlurs = generateBlurParameters(SPLINE_COUNT);
+
+    // Set canvas size to match container
+    function setCanvasSize() {
+        canvas.width = container.offsetWidth;
+        canvas.height = container.offsetHeight;
+    }
+
+    // Initial setup
+    setCanvasSize();
+    container.appendChild(canvas);
+
+    // Pre-compute control points function to be more efficient
+    function computeControlPoints(p1, p2) {
+        const dx = p2.x - p1.x;
+        return {
+            cp1x: p1.x + dx / 2,
+            cp1y: p1.y,
+            cp2x: p2.x - dx / 2,
+            cp2y: p2.y
+        };
+    }
+
+    // Pre-compute spline positions
+    let pointsCache = new Array(SPLINE_COUNT);
+    for (let s = 0; s < SPLINE_COUNT; s++) {
+        pointsCache[s] = new Array(5); // anchorPoints = 5
+        for (let i = 0; i < 5; i++) {
+            pointsCache[s][i] = { x: 0, y: 0 };
+        }
+    }
+
+    // Draw oscillating splines
+    function drawSplines(timestamp) {
+        if (!lastTimestamp) lastTimestamp = timestamp;
+        const deltaTime = (timestamp - lastTimestamp) / 1000; // Convert to seconds
+        lastTimestamp = timestamp;
+        
+        // Use a smoother time increment based on actual elapsed time
+        // Multiply by a small factor to control overall animation speed
+        time += deltaTime * 60; // Scale to roughly match previous speed but smoother
+        
+        // Fill canvas with black background
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Common parameters for all splines
+        const splineWidth = canvas.width; // Full canvas width
+        const startX = 0;
+        const endX = canvas.width;
+        const anchorPoints = 5;
+        const centerY = canvas.height / 2;
+        
+        // Draw each spline
+        for (let s = 0; s < SPLINE_COUNT; s++) {
+            const oscillators = splineOscillators[s];
+            const blurParams = splineBlurs[s];
+            
+            // Calculate positions of anchor points with random oscillation
+            for (let i = 0; i < anchorPoints; i++) {
+                const x = startX + (splineWidth / (anchorPoints - 1)) * i;
+                const oscillator = oscillators[i];
+                
+                // Combine multiple sine waves for more complex motion
+                const primaryWave = Math.sin(time * oscillator.frequency + oscillator.phase) * oscillator.amplitude;
+                const secondaryWave = Math.sin(time * oscillator.secondaryFreq + oscillator.phase * 1.5) * (oscillator.amplitude * 0.3);
+                const yOffset = primaryWave + secondaryWave;
+                
+                // Update cache instead of recreating points array
+                pointsCache[s][i].x = x;
+                pointsCache[s][i].y = centerY + yOffset;
+            }
+            
+            // Set up individual oscillating blur effect for this spline
+            const blurAmount = blurParams.minBlur + 
+                Math.abs(Math.sin(time * blurParams.blurSpeed + blurParams.blurPhase)) * 
+                (blurParams.maxBlur - blurParams.minBlur);
+            ctx.filter = `blur(${blurAmount}px)`;
+            
+            // Get points from cache
+            const points = pointsCache[s];
+            
+            // Draw spline
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            
+            // Draw a smooth curve through all points
+            for (let i = 0; i < points.length - 1; i++) {
+                const current = points[i];
+                const next = points[i + 1];
+                const cp = computeControlPoints(current, next);
+                ctx.bezierCurveTo(cp.cp1x, cp.cp1y, cp.cp2x, cp.cp2y, next.x, next.y);
+            }
+            
+            // Style and stroke the spline - use consistent line width per spline
+            // Random line width each frame causes jitter
+            ctx.lineWidth = 10 + (s % 8); // Different thickness for each spline, but consistent
+            ctx.strokeStyle = splineColors[s];
+            ctx.stroke();
+            
+            // Reset filter for the next spline
+            ctx.filter = 'none';
+        }
+        
+        // Continue animation loop
+        animationId = requestAnimationFrame(drawSplines);
+    }
+
+    // Start animation
+    animationId = requestAnimationFrame(drawSplines);
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        setCanvasSize();
+        // No need to call drawSplines() here as the animation loop is running
+    });
+    
+    // Clean up animation when page unloads
+    window.addEventListener('beforeunload', () => {
+        cancelAnimationFrame(animationId);
+    });
+</script>
+</body>
+</html> 
