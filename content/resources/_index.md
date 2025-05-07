@@ -116,6 +116,8 @@ There's free commercial version available.
 
 In the demos of event modeling, [Miro](https://miro.com) is used. If you would like to get started from a small example, you can download the example event model above from [here](/event-modeling.rtb).
 
+## [FigJam Template](https://www.figma.com/community/file/1210608432896547037) {#figjam-template}
+
 ## [Implementation Gist](#implementation-gist) {#implementation-gist}
 
 ![trello screenshot](../trello-screenshot.png)
