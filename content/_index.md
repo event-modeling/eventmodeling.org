@@ -6,7 +6,7 @@ keywords: [Intro, Background, Theory]
 author: adymitruk
 ---
 
-Event Modeling is a method of describing systems using an example of how information has changed within them over time. It was delevolped at **[Adaptech Group](https://adaptechgroup.com)** by **[Adam Dymitruk](https://www.linkedin.com/in/eventmodeling/)**. Event Modeling specifically omits transient details and looks at what the information flow is and what the user sees at any particular point in time. These are the events on the timeline that form the description of the system.
+Event Modeling is a method of describing systems using an example of how information has changed within them over time. It was developed at **[Adaptech Group](https://adaptechgroup.com)** by **[Adam Dymitruk](https://www.linkedin.com/in/eventmodeling/)**. Event Modeling specifically omits transient details and looks at what the information flow is and what the user sees at any particular point in time. These are the events on the timeline that form the description of the system.
 
 ![example](event-modeling-tutorial.jpg)
 
