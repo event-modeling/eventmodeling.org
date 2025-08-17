@@ -87,13 +87,13 @@ This is the first public recording of a talk on Event Modeling. It was recorded 
 
 ### [Miro Plugin from Nebulit.de](https://nebulit.de)
 
-**Event Modeling Plugin for Miro** allows you to create event models and navigate them with ease as well as generate code from the model. Other features include checking references to ensure "information completeness" and moving the elements quickly to efficiently add to the moedel.
+**Event Modeling Plugin for Miro** allows you to create event models and navigate them with ease as well as generate code from the model. Other features include checking references to ensure "information completeness" and moving the elements quickly to efficiently add to the model.
 
 ![nebulit](nebulit.png)S
 
 ### [ONote](https://onote.com)
 
-**ONote** is a browser based tool for event modeling exclusively. It focuses on the cadance of event modeling and real-time collaboration.
+**ONote** is a browser based tool for event modeling exclusively. It focuses on the cadence of event modeling and real-time collaboration.
 
 ![onote](onote.png)
 
