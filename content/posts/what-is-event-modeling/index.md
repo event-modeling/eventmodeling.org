@@ -43,7 +43,7 @@ When we want to adopt certain practices or processes to help one another underst
 
 When the book is a required reading by the people in an organization, everyone will say they have read it; only half will have actually read it; half of those will claim they understood it; and only half of those will have understood it; and half of those will be able to apply it.
 
-This is why Event Modeling only uses 3 moving pieces and 4 patterns based on 2 ideas. It takes a few minutes to explain and the rest of the learning is done in practice, transparently where any deficiencies in the understanding of even those few core ideas are quickly corrected.
+This is why Event Modeling only uses 3 moving pieces and 4 patterns based on 2 ideas. It takes a few minutes to explain and the rest of the learning is done in practice, transparently where any deficiencies in the understanding of even those few core ideas are quickly corrected. It's imperative to always follow the only way that these elements connect: command to event, event to state view, state view to UI or processor, UI/processor to command. Connecting an event directly to a command is not allowed. This keeps the simplest convention for information flow; you don't get a proliferation of possibilities that add to the complexity.
 
 This is how you get to an understanding in an organization.
 
@@ -88,25 +88,23 @@ Specifying how a view behaves is very similar to the way we specify how we accep
 
 ### [Integration](#integration) {#integration}
 
-We just covered the first 2 patterns of the 4 that are needed to describe most systems. Systems can get information from other systems and send information to other systems. It would be tempting to force these 2 patterns to be an extension of the first 2 and share the same space. However, these interactions are harder to communicate as they don't have that human-visible aspect to them and require some higher level patterns.
+We just covered the first 2 patterns of the 4 that are needed to describe most systems. Systems can get information from other systems and send information to other systems. It would be tempting to force these 2 patterns to be an extension of the first 2 and share the same space. However, these interactions are harder to communicate as they don't have that human-visible aspect to them and require some higher level patterns - although you can add system admin screens and dashboards.
 
 ### [Translation](#translation) {#translation}
 
-When we have an external system that's providing us with information, it's helpful to translate that information into a form that is more familiar in our own system. In our hotel system, we may get events from guests' GPS coordinates if they opted in to our highly reactive cleaning crew. We would not want to use longitude and latitude pairs as events to specify preconditions in our system. We would rather have events that mean something to us like "Guest left hotel", "Guest returned to hotel room".
+When we have an external system that's providing us with information, it's helpful to translate that information into a form that is more familiar in our own system. In our hotel system, we may get events from guests' GPS coordinates if they opted in to our highly reactive cleaning crew. We would not want to use longitude and latitude pairs as events to specify preconditions in our system. We would rather have events that mean something to us like "Guest left hotel", "Guest returned to hotel room". We show what we want to export in the green to-do list and what how we further transform on our side in the blue command box. Note that we keep to the convention of connecting events from swim lane 1 to state view, state view to processor, processor to command, command to event in swim lane 2.
 
 ![understand](understand.jpg)
 <sub>[high res version](understand_large.jpg)</sub>
 
-Often, translations are simple enough to represent as views that get their information from external events. If we don't use them as any "Given" parts of tests, the values they store in that view model are simply represented in the command parameters in our state change tests.
-
 ### [Automation](#automation) {#automation}
 
-Our system is going to need to communicate with external services. When the guests in our hotel are paying for their stay when they check out, our system makes a call to a payment processor. We can make the concept of how this occurs with the idea of a "todo list" for some processor in our system. This todo list shows tasks we need to complete. Our processor goes through that list from time to time (could be milliseconds or days) and sends out a command to the external system to process the payment, as an example. The reply from the external system is then translated into an event that we store back in our system. This way we keep the building blocks that we use in our system as something that's meaningful to us.
+Our system is going to need to communicate with external services. When the guests in our hotel are paying for their stay when they check out, our system makes a call to a payment processor. We can make the concept of how this occurs with the idea of a "todo list" for some processor in our system. This todo list shows tasks we need to complete. Our processor goes through that list from time to time (could be milliseconds or days) and uses an external service, then issues a command to store the reply from the external system as an event that we store back in our system.
 
 ![automate](automate.jpg)
 <sub>[high res version](automate_large.jpg)</sub>
 
-We show this by putting a processor in the top of our blueprint which has the wireframes. This shows that there are things not evident on the screen but are happening behind the scenes. A user may expect a spinning icon to indicate a delay due to background tasks needing to finish. The specification for this has the form of "**Given**: A view of the tasks to do, **When** This command is launched for each item, **Then** These events are expected back."
+We put a processor in the top of our blueprint which has the wireframes. This shows that there are things not evident on the screen but are happening behind the scenes. A user may expect a spinning icon to indicate a delay due to background tasks needing to finish. The specification for this is always done in 2 parts: The Given-When-Then for creating the to-do list and the Given-When-Then for executing the command. This may incorporate failure that can trigger retries if needed.
 
 In reality, these may be implemented in many different ways such as queues, reactive or real-time constructs. They may even actually be manual todo lists that our employees use. The goal here is to communicate how our system communicates with the outside world when it needs to affect it.
 
