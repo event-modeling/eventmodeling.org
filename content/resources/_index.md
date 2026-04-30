@@ -4,8 +4,7 @@ date: 2019-06-27T19:48:07-07:00
 type: page
 draft: false
 ---
-# Table of Contents
-
+# Table of Contents:
 1. [Workshops](#workshops)
 2. [Live Streams](#live-streams)
 3. [Community](#discord)
@@ -84,7 +83,7 @@ This is the first public recording of a talk on Event Modeling. It was recorded 
 
 # [Tools](#tools) {#tools}
 
-## Online Modeling Tools
+## Online Modeling Tools:
 
 ### [Miro Plugin from Nebulit.de](https://nebulit.de)
 
@@ -100,7 +99,7 @@ This is the first public recording of a talk on Event Modeling. It was recorded 
 
 ### [Evident Design](https://evidentstack.com/)
 
-**Evident Design** is the next generation successor to ONote.
+**Evident Design** is the next generation successor to ONote. 
 
 ![Evident Design](evident-design.png)
 
@@ -122,3 +121,4 @@ In the demos of event modeling, [Miro](https://miro.com) is used. If you would l
 ![trello screenshot](../trello-screenshot.png)
 
 This script only requires [fish shell](https://github.com/fish-shell/fish-shell) and a couple of command line utilities to show the above example work. You can find it in a gist [here](https://gist.github.com/adymitruk//7fc2adb8598ad861d4b3dae114afd4c9).
+
